@@ -81,7 +81,7 @@ class ImportCSVDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : Need to import CSV data into the worksheet.
     */ 
     public $worksheet;
 
@@ -96,7 +96,7 @@ class ImportCSVDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * startcell : 
+    * startcell : Starting position for data import
     */ 
     public $startcell;
 
@@ -111,7 +111,7 @@ class ImportCSVDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * insert : 
+    * insert : Controls the insertion behavior. true: inserts data; false: overwrites existing data.
     */ 
     public $insert;
 
@@ -126,7 +126,7 @@ class ImportCSVDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * convertNumericData : 
+    * convertNumericData : Whether the string in text file is converted to numeric data.
     */ 
     public $convert_numeric_data;
 
@@ -406,7 +406,7 @@ class ImportCSVDataIntoSpreadsheetRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

@@ -38,7 +38,7 @@ use Aspose\Cells\Cloud\Configuration;
 use Aspose\Cells\Cloud\HeaderSelector;
 use Aspose\Cells\Cloud\ObjectSerializer;
 use Aspose\Cells\Cloud\Request\DecomposeUserTaskRequest;
-use Aspose\Cells\Cloud\Request\TranslationSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\TranslateSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\TranslateTextFileRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
@@ -56,6 +56,8 @@ use Aspose\Cells\Cloud\Request\ConvertSpreadsheetToJsonRequest;
 use Aspose\Cells\Cloud\Request\ConvertSpreadsheetToCsvRequest;
 use Aspose\Cells\Cloud\Request\ConvertWorksheetToImageRequest;
 use Aspose\Cells\Cloud\Request\ConvertWorksheetToPdfRequest;
+use Aspose\Cells\Cloud\Request\ConvertWorksheetToJsonRequest;
+use Aspose\Cells\Cloud\Request\ConvertWorksheetToCsvRequest;
 use Aspose\Cells\Cloud\Request\ConvertWorksheetToHtmlRequest;
 use Aspose\Cells\Cloud\Request\ConvertWorksheetToHtmlTableRequest;
 use Aspose\Cells\Cloud\Request\ConvertTableToImageRequest;
@@ -83,15 +85,20 @@ use Aspose\Cells\Cloud\Request\ImportXMLDataIntoSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ImportCSVDataIntoSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\GetPublicKeyRequest;
 use Aspose\Cells\Cloud\Request\CreateSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\GetWorksheetsWithLocalSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AddWorksheetToSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\DeleteWorksheetFromSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RenameWorksheetInSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\MoveWorksheetInSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\CompressSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RepairSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\GetMergedCellsInRemotedWorksheetRequest;
+use Aspose\Cells\Cloud\Request\GetMergedCellsInWorksheetRequest;
 use Aspose\Cells\Cloud\Request\ProtectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\UnprotectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SpreadsheetDigitalsignatureRequest;
+use Aspose\Cells\Cloud\Request\SearchAllTextItemsInRemoteSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\SearchSpreadsheetAllTextItemsRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetContentRequest;
 use Aspose\Cells\Cloud\Request\SearchContentInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SearchContentInRemoteWorksheetRequest;
@@ -991,7 +998,7 @@ class CellsApi
     }
 
     /// <summary>
-    /// Translates the entire spreadsheet to the specified target language.
+    /// AI task decomposition: Convert user objectives to sequential action plans with formatted file export.
     /// </summary>
     /// <param name="request">Request. <see cref="DecomposeUserTaskRequest" /></param>
     public function decomposeUserTask( $request , $localOutPath = null)
@@ -1010,8 +1017,8 @@ class CellsApi
     /// <summary>
     /// Translates the entire spreadsheet to the specified target language.
     /// </summary>
-    /// <param name="request">Request. <see cref="TranslationSpreadsheetRequest" /></param>
-    public function translationSpreadsheet( $request , $localOutPath = null)
+    /// <param name="request">Request. <see cref="TranslateSpreadsheetRequest" /></param>
+    public function translateSpreadsheet( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';
@@ -1025,20 +1032,16 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Translates text file content to the specified target language.
     /// </summary>
     /// <param name="request">Request. <see cref="TranslateTextFileRequest" /></param>
-    public function translateTextFile( $request , $localOutPath = null)
+    public function translateTextFile( $request)
     {
         $this->checkAccessToken();
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
         list($response) = $this->execute($requesData,$returnType);
-        if ($localOutPath === null) {  
-                return  $response;
-            }else{
-                copy($response->getPathname(),$localOutPath);
-                return $localOutPath;
-            }}
+        return  $response;}
 
     /// <summary>
     /// The Aggregate by Color API provides a convenient way to perform calculations on cells that share the same fill or font color. This API supports a range of aggregate operations, including count, sum, maximum value, minimum value, and average value, enabling you to analyze and summarize data based on color distinctions.
@@ -1225,6 +1228,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Converts a spreadsheet on a local drive to the JSON file.
     /// </summary>
     /// <param name="request">Request. <see cref="ConvertSpreadsheetToJsonRequest" /></param>
     public function convertSpreadsheetToJson( $request , $localOutPath = null)
@@ -1292,6 +1296,40 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Converts a worksheet of spreadsheet on a local drive to the JSON file.
+    /// </summary>
+    /// <param name="request">Request. <see cref="ConvertWorksheetToJsonRequest" /></param>
+    public function convertWorksheetToJson( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// Converts a worksheet of spreadsheet on a local drive to the CSV file.
+    /// </summary>
+    /// <param name="request">Request. <see cref="ConvertWorksheetToCsvRequest" /></param>
+    public function convertWorksheetToCsv( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
     /// Converts a worksheet of spreadsheet on a local drive to the html file.
     /// </summary>
     /// <param name="request">Request. <see cref="ConvertWorksheetToHtmlRequest" /></param>
@@ -1309,6 +1347,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Converts a worksheet of spreadsheet on a local drive to the HTML table file.
     /// </summary>
     /// <param name="request">Request. <see cref="ConvertWorksheetToHtmlTableRequest" /></param>
     public function convertWorksheetToHtmlTable( $request , $localOutPath = null)
@@ -1609,7 +1648,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Split an Excel worksheet into multiple sheets by column value.
+    /// Split an Excel worksheet tale into multiple sheets by column value.
     /// </summary>
     /// <param name="request">Request. <see cref="SplitTableRequest" /></param>
     public function splitTable( $request , $localOutPath = null)
@@ -1660,6 +1699,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Import JSON data file into the local spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="ImportJSONDataIntoSpreadsheetRequest" /></param>
     public function importJSONDataIntoSpreadsheet( $request , $localOutPath = null)
@@ -1676,6 +1716,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Import XML data file into the local spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="ImportXMLDataIntoSpreadsheetRequest" /></param>
     public function importXMLDataIntoSpreadsheet( $request , $localOutPath = null)
@@ -1692,6 +1733,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Import CSV data file into the local spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="ImportCSVDataIntoSpreadsheetRequest" /></param>
     public function importCSVDataIntoSpreadsheet( $request , $localOutPath = null)
@@ -1735,6 +1777,18 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Fetches a complete list of worksheets from the currently active local spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="GetWorksheetsWithLocalSpreadsheetRequest" /></param>
+    public function getWorksheetsWithLocalSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = 'string';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// The Web API enables users to add a new worksheet to a workbook, specifying the worksheet's type, position, and name. This function provides flexibility in managing workbook structure by allowing detailed control over worksheet addition.
@@ -1822,6 +1876,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// The Web API endpoint allows users to repair a spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="RepairSpreadsheetRequest" /></param>
     public function repairSpreadsheet( $request , $localOutPath = null)
@@ -1836,6 +1891,30 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Get all merged cell area form a remote spreadsheet worksheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="GetMergedCellsInRemotedWorksheetRequest" /></param>
+    public function getMergedCellsInRemotedWorksheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellArea[]';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Get all merged cell area form a local spreadsheet worksheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="GetMergedCellsInWorksheetRequest" /></param>
+    public function getMergedCellsInWorksheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellArea[]';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// Applies dual-layer password protection to Excel spreadsheets, supporting both open and modify passwords with encryption.
@@ -1886,6 +1965,30 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Get all text items in the remote spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchAllTextItemsInRemoteSpreadsheetRequest" /></param>
+    public function searchAllTextItemsInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Get all text items in the remote spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchSpreadsheetAllTextItemsRequest" /></param>
+    public function searchSpreadsheetAllTextItems( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// Search text in the local spreadsheet.
@@ -2264,6 +2367,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Removes duplicate values in the worksheet/range/table.
     /// </summary>
     /// <param name="request">Request. <see cref="RemoveDuplicatesRequest" /></param>
     public function removeDuplicates( $request , $localOutPath = null)
@@ -2297,6 +2401,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Transposes a specified data range (rows become columns, columns become rows).
     /// </summary>
     /// <param name="request">Request. <see cref="FlipDataRequest" /></param>
     public function flipData( $request , $localOutPath = null)

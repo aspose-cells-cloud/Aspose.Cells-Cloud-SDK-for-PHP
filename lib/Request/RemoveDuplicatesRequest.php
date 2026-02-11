@@ -66,7 +66,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : The worksheet name.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
     }
 
     /*
-    * range : 
+    * range : Range name that need deduplication.
     */ 
     public $range;
 
@@ -96,7 +96,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
     }
 
     /*
-    * table : 
+    * table : Table name that need deduplication.
     */ 
     public $table;
 
@@ -297,7 +297,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

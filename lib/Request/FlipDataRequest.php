@@ -66,7 +66,7 @@ class FlipDataRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : The worksheet name.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class FlipDataRequest extends BaseApiRequest
     }
 
     /*
-    * cellArea : 
+    * cellArea : A specified data range
     */ 
     public $cell_area;
 
@@ -96,7 +96,7 @@ class FlipDataRequest extends BaseApiRequest
     }
 
     /*
-    * Horizontal : 
+    * Horizontal : Horizontal/Vertical Flip.
     */ 
     public $horizontal;
 
@@ -315,7 +315,7 @@ class FlipDataRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

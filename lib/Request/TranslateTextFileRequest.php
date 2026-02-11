@@ -134,7 +134,7 @@ class TranslateTextFileRequest extends BaseApiRequest
         }
 
 
-        $resourcePath = 'v4.0/cells/ai/translate/text';
+        $resourcePath = 'v4.0/cells/ai/translate/text-file';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -230,7 +230,7 @@ class TranslateTextFileRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

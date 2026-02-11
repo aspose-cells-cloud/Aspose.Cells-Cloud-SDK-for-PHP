@@ -66,7 +66,7 @@ class ConvertChartToImageRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : worksheet name of spreadsheet.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class ConvertChartToImageRequest extends BaseApiRequest
     }
 
     /*
-    * chartIndex : 
+    * chartIndex : chart index of worksheet.
     */ 
     public $chart_index;
 
@@ -343,7 +343,7 @@ class ConvertChartToImageRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

@@ -81,7 +81,7 @@ class ImportXMLDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : Need to import XML data into the worksheet.
     */ 
     public $worksheet;
 
@@ -96,7 +96,7 @@ class ImportXMLDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * startcell : 
+    * startcell : Starting position for data import
     */ 
     public $startcell;
 
@@ -111,7 +111,7 @@ class ImportXMLDataIntoSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * insert : 
+    * insert : Controls the insertion behavior. true: inserts data; false: overwrites existing data.
     */ 
     public $insert;
 
@@ -368,7 +368,7 @@ class ImportXMLDataIntoSpreadsheetRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.1.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.2';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
