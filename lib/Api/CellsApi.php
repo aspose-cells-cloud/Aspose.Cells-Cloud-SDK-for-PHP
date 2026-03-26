@@ -94,6 +94,8 @@ use Aspose\Cells\Cloud\Request\CompressSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RepairSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\GetMergedCellsInRemotedWorksheetRequest;
 use Aspose\Cells\Cloud\Request\GetMergedCellsInWorksheetRequest;
+use Aspose\Cells\Cloud\Request\AcceptAllRevisionsRequest;
+use Aspose\Cells\Cloud\Request\AcceptAllRevisionsInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ProtectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\UnprotectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SpreadsheetDigitalsignatureRequest;
@@ -1915,6 +1917,38 @@ class CellsApi
         $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
         list($response) = $this->execute($requesData,$returnType);
         return  $response;}
+
+    /// <summary>
+    /// </summary>
+    /// <param name="request">Request. <see cref="AcceptAllRevisionsRequest" /></param>
+    public function acceptAllRevisions( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// </summary>
+    /// <param name="request">Request. <see cref="AcceptAllRevisionsInRemoteSpreadsheetRequest" /></param>
+    public function acceptAllRevisionsInRemoteSpreadsheet( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
 
     /// <summary>
     /// Applies dual-layer password protection to Excel spreadsheets, supporting both open and modify passwords with encryption.

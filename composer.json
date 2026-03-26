@@ -21,7 +21,7 @@
 		}
 	],
 	"require" : {
-		"php" : ">=7.4",
+		"php" : ">=5.5",
 		"ext-curl" : "*",
 		"ext-json" : "*",
 		"ext-mbstring" : "*",
@@ -35,6 +35,6 @@
         "psr-4": { "Aspose\\Cells\\Cloud\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "Aspose\\Cells\\Cloud\\" : "integrationtests/" }
+        "psr-4": { "Aspose\\Cells\\Cloud\\" : "test/" }
   }
 }

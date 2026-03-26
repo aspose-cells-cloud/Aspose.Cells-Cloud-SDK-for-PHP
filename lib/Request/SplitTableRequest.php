@@ -126,6 +126,21 @@ class SplitTableRequest extends BaseApiRequest
     }
 
     /*
+    * splitRowNumber : 
+    */ 
+    public $split_row_number;
+
+    public function getSplitRowNumber()
+    {
+        return $this->split_row_number;
+    }
+
+    public function setSplitRowNumber($value)
+    {
+        $this->split_row_number = $value;
+    }
+
+    /*
     * toNewWorkbook : Export destination control: true - Creates new workbook files containing the split data; false - Adds a new worksheet to the current workbook.
     */ 
     public $to_new_workbook;
@@ -230,13 +245,14 @@ class SplitTableRequest extends BaseApiRequest
         $this->password = $value;
     }
 
-    public function __construct( $spreadsheet = null,$worksheet = null,$table_name = null,$split_column_name = null,$save_split_column = null,$to_new_workbook = null,$to_multiple_files = null )
+    public function __construct( $spreadsheet = null,$worksheet = null,$table_name = null,$split_column_name = null,$save_split_column = null,$split_row_number = null,$to_new_workbook = null,$to_multiple_files = null )
     {        
         $this->spreadsheet = $spreadsheet; 
         $this->worksheet = $worksheet; 
         $this->table_name = $table_name; 
         $this->split_column_name = $split_column_name; 
         $this->save_split_column = $save_split_column; 
+        $this->split_row_number = $split_row_number; 
         $this->to_new_workbook = $to_new_workbook; 
         $this->to_multiple_files = $to_multiple_files; 
     }
@@ -283,6 +299,14 @@ class SplitTableRequest extends BaseApiRequest
         }
 
 
+        // verify the required parameter 'split_row_number' is set
+        if ($this->split_row_number === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $split_row_number when calling SplitTable'
+            );
+        }
+
+
         // verify the required parameter 'to_new_workbook' is set
         if ($this->to_new_workbook === null) {
             throw new \InvalidArgumentException(
@@ -320,6 +344,10 @@ class SplitTableRequest extends BaseApiRequest
         // query params : save_split_column
         if ($this->save_split_column !== null) {
             $queryParams['saveSplitColumn'] = ObjectSerializer::toQueryValue($this->save_split_column);
+        }
+        // query params : split_row_number
+        if ($this->split_row_number !== null) {
+            $queryParams['splitRowNumber'] = ObjectSerializer::toQueryValue($this->split_row_number);
         }
         // query params : to_new_workbook
         if ($this->to_new_workbook !== null) {
@@ -427,7 +455,7 @@ class SplitTableRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.2';
+        $defaultHeaders['x-aspose-client-version'] = '26.3.1';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
