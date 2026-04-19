@@ -130,6 +130,9 @@ use Aspose\Cells\Cloud\Request\RemoveSpreadsheetBlankWorksheetsRequest;
 use Aspose\Cells\Cloud\Request\RemoveDuplicatesRequest;
 use Aspose\Cells\Cloud\Request\SwapRangeRequest;
 use Aspose\Cells\Cloud\Request\FlipDataRequest;
+use Aspose\Cells\Cloud\Request\TransposeDataRequest;
+use Aspose\Cells\Cloud\Request\UnpivotRangeRequest;
+use Aspose\Cells\Cloud\Request\UnpivotTableRequest;
 use Aspose\Cells\Cloud\Request\DownloadFileRequest;
 use Aspose\Cells\Cloud\Request\UploadFileRequest;
 use Aspose\Cells\Cloud\Request\CopyFileRequest;
@@ -2439,6 +2442,57 @@ class CellsApi
     /// </summary>
     /// <param name="request">Request. <see cref="FlipDataRequest" /></param>
     public function flipData( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// Switch rows and columns in the spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="TransposeDataRequest" /></param>
+    public function transposeData( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// Switch rows and columns in the spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="UnpivotRangeRequest" /></param>
+    public function unpivotRange( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// Switch rows and columns in the spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="UnpivotTableRequest" /></param>
+    public function unpivotTable( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';

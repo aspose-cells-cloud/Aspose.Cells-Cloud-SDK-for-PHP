@@ -141,7 +141,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
     }
 
     /*
-    * region : The spreadsheet region setting.
+    * region : Spreadsheet region/language setting (e.g., `en-US`, `fr-FR`). Influences number formatting, date parsing, and locale‑specific behavior.
     */ 
     public $region;
 
@@ -297,7 +297,7 @@ class RemoveDuplicatesRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.3.1';
+        $defaultHeaders['x-aspose-client-version'] = '26.4';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
