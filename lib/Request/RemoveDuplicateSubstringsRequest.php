@@ -111,7 +111,7 @@ class RemoveDuplicateSubstringsRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : Specify the worksheet of spreadsheet.
     */ 
     public $worksheet;
 
@@ -126,7 +126,7 @@ class RemoveDuplicateSubstringsRequest extends BaseApiRequest
     }
 
     /*
-    * range : 
+    * range : Specify the worksheet range of spreadsheet.
     */ 
     public $range;
 
@@ -344,7 +344,7 @@ class RemoveDuplicateSubstringsRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.4';
+        $defaultHeaders['x-aspose-client-version'] = '26.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

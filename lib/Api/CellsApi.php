@@ -96,6 +96,8 @@ use Aspose\Cells\Cloud\Request\GetMergedCellsInRemotedWorksheetRequest;
 use Aspose\Cells\Cloud\Request\GetMergedCellsInWorksheetRequest;
 use Aspose\Cells\Cloud\Request\AcceptAllRevisionsRequest;
 use Aspose\Cells\Cloud\Request\AcceptAllRevisionsInRemoteSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\GetSpreadsheetStructureRequest;
+use Aspose\Cells\Cloud\Request\GetStructureInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ProtectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\UnprotectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SpreadsheetDigitalsignatureRequest;
@@ -115,13 +117,20 @@ use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteWorksheetRequest;
 use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteRangeRequest;
 use Aspose\Cells\Cloud\Request\SpecRequest;
 use Aspose\Cells\Cloud\Request\CodegenSpecRequest;
+use Aspose\Cells\Cloud\Request\TrimCharacterInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\TrimCharacterRequest;
 use Aspose\Cells\Cloud\Request\UpdateWordCaseRequest;
+use Aspose\Cells\Cloud\Request\UpdateWordCaseInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RemoveCharactersRequest;
+use Aspose\Cells\Cloud\Request\RemoveCharactersInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RemoveCharactersByPositionRequest;
+use Aspose\Cells\Cloud\Request\RemoveCharactersByPositionInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\RemoveDuplicateSubstringsRequest;
+use Aspose\Cells\Cloud\Request\RemoveDuplicateSubstringsInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AddTextRequest;
+use Aspose\Cells\Cloud\Request\AddTextInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ConvertTextRequest;
+use Aspose\Cells\Cloud\Request\ConvertTextInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ExtractTextRequest;
 use Aspose\Cells\Cloud\Request\SplitTextRequest;
 use Aspose\Cells\Cloud\Request\RemoveSpreadsheetBlankRowsRequest;
@@ -513,6 +522,7 @@ use Aspose\Cells\Cloud\Model\TextItem;
 use Aspose\Cells\Cloud\Model\DbfSaveOptions;
 use Aspose\Cells\Cloud\Model\DifSaveOptions;
 use Aspose\Cells\Cloud\Model\DocxSaveOptions;
+use Aspose\Cells\Cloud\Model\EbookSaveOptions;
 use Aspose\Cells\Cloud\Model\HtmlSaveOptions;
 use Aspose\Cells\Cloud\Model\ImageSaveOptions;
 use Aspose\Cells\Cloud\Model\JsonSaveOptions;
@@ -1954,6 +1964,30 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Structurally convert the core metadata, worksheets, tables, pivot tables, charts, shapes, and other information of an Excel workbook into a JObject type JSON object, for scenarios such as data export, API responses, and log recording.
+    /// </summary>
+    /// <param name="request">Request. <see cref="GetSpreadsheetStructureRequest" /></param>
+    public function getSpreadsheetStructure( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = 'string';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Structurally convert the core metadata, worksheets, tables, pivot tables, charts, shapes, and other information of an Excel workbook into a JObject type JSON object, for scenarios such as data export, API responses, and log recording.
+    /// </summary>
+    /// <param name="request">Request. <see cref="GetStructureInRemoteSpreadsheetRequest" /></param>
+    public function getStructureInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = 'string';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Applies dual-layer password protection to Excel spreadsheets, supporting both open and modify passwords with encryption.
     /// </summary>
     /// <param name="request">Request. <see cref="ProtectSpreadsheetRequest" /></param>
@@ -2202,6 +2236,18 @@ class CellsApi
     /// <summary>
     /// The TrimSpreadsheetContent API is designed to process and trim content within a spreadsheet. This API allows users to remove extra spaces, line breaks, or other unnecessary characters from the content of selected cells. It is particularly useful for cleaning up data entries and ensuring consistency in spreadsheet formatting
     /// </summary>
+    /// <param name="request">Request. <see cref="TrimCharacterInRemoteSpreadsheetRequest" /></param>
+    public function trimCharacterInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// The TrimSpreadsheetContent API is designed to process and trim content within a remote spreadsheet. This API allows users to remove extra spaces, line breaks, or other unnecessary characters from the content of selected cells. It is particularly useful for cleaning up data entries and ensuring consistency in spreadsheet formatting
+    /// </summary>
     /// <param name="request">Request. <see cref="TrimCharacterRequest" /></param>
     public function trimCharacter( $request , $localOutPath = null)
     {
@@ -2234,6 +2280,18 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Specify changing the text case in a remote spreadsheet to switch between uppercase, lowercase, capitalizing the first letter of each word, or capitalizing the first letter of a sentence, and adjust the text according to specific needs.
+    /// </summary>
+    /// <param name="request">Request. <see cref="UpdateWordCaseInRemoteSpreadsheetRequest" /></param>
+    public function updateWordCaseInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Deletes user-defined characters, predefined symbol sets, or any substring from every cell in the chosen range while preserving formulas, formatting and data-validation.
     /// </summary>
     /// <param name="request">Request. <see cref="RemoveCharactersRequest" /></param>
@@ -2249,6 +2307,18 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Deletes user-defined characters, predefined symbol sets, or any substring from every cell in the chosen range while preserving formulas, formatting and data-validation for a remote spreadsheet.
+    /// </summary>
+    /// <param name="request">Request. <see cref="RemoveCharactersInRemoteSpreadsheetRequest" /></param>
+    public function removeCharactersInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// Deletes characters from every cell in the target range by position (first/last N, before/after a substring, or between two delimiters) while preserving formulas, formatting and data-validation.
@@ -2268,6 +2338,18 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Deletes characters from every cell in the target range by position (first/last N, before/after a substring, or between two delimiters) while preserving formulas, formatting and data-validation.
+    /// </summary>
+    /// <param name="request">Request. <see cref="RemoveCharactersByPositionInRemoteSpreadsheetRequest" /></param>
+    public function removeCharactersByPositionInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Finds and removes repeated substrings inside every cell of the chosen range, using user-defined or preset delimiters, while preserving formulas, formatting and data-validation.
     /// </summary>
     /// <param name="request">Request. <see cref="RemoveDuplicateSubstringsRequest" /></param>
@@ -2283,6 +2365,18 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Finds and removes repeated substrings inside every cell of the chosen range, using user-defined or preset delimiters, while preserving formulas, formatting and data-validation.
+    /// </summary>
+    /// <param name="request">Request. <see cref="RemoveDuplicateSubstringsInRemoteSpreadsheetRequest" /></param>
+    public function removeDuplicateSubstringsInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// Specify appending text to multiple cells at once, allowing you to add prefixes, suffixes, labels, or any specific characters. You can choose the exact position of the text—in the beginning, at the end, or before or after certain characters in the cell.
@@ -2302,6 +2396,18 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Specify appending text to multiple cells at once, allowing you to add prefixes, suffixes, labels, or any specific characters. You can choose the exact position of the text—in the beginning, at the end, or before or after certain characters in the cell.
+    /// </summary>
+    /// <param name="request">Request. <see cref="AddTextInRemoteSpreadsheetRequest" /></param>
+    public function addTextInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Indicates converting the numbers stored as text into the correct number format, replacing unwanted characters and line breaks with the desired characters, and converting accented characters to their equivalent characters without accents.
     /// </summary>
     /// <param name="request">Request. <see cref="ConvertTextRequest" /></param>
@@ -2317,6 +2423,18 @@ class CellsApi
                 copy($response->getPathname(),$localOutPath);
                 return $localOutPath;
             }}
+
+    /// <summary>
+    /// Indicates converting the numbers stored as text into the correct number format, replacing unwanted characters and line breaks with the desired characters, and converting accented characters to their equivalent characters without accents.
+    /// </summary>
+    /// <param name="request">Request. <see cref="ConvertTextInRemoteSpreadsheetRequest" /></param>
+    public function convertTextInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\CellsCloudResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
 
     /// <summary>
     /// Indicates extracting substrings, text characters, and numbers from a spreadsheet cell into another cell without having to use complex FIND, MIN, LEFT, or RIGHT formulas.
