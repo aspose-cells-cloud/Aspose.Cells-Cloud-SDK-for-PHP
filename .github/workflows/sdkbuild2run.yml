@@ -48,8 +48,6 @@ jobs:
     - name: Run Example Codes
       shell: cmd
       run: |
-        echo "API Key: ${{ secrets.PRODUCTCLIENTID }}"
-        echo "API Key: $env:CellsCloudClientId"
         cd examples
         .\composer.bat install --prefer-dist --no-progress
         php .\Example_QuickStart.php
