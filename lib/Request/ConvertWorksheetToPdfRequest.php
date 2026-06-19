@@ -126,6 +126,36 @@ class ConvertWorksheetToPdfRequest extends BaseApiRequest
     }
 
     /*
+    * AutoRowsFit : (Optional) Autofits all rows in worksheets.
+    */ 
+    public $auto_rows_fit;
+
+    public function getAutoRowsFit()
+    {
+        return $this->auto_rows_fit;
+    }
+
+    public function setAutoRowsFit($value)
+    {
+        $this->auto_rows_fit = $value;
+    }
+
+    /*
+    * AutoColumnsFit : (Optional) Autofits all columns in worksheets.
+    */ 
+    public $auto_columns_fit;
+
+    public function getAutoColumnsFit()
+    {
+        return $this->auto_columns_fit;
+    }
+
+    public function setAutoColumnsFit($value)
+    {
+        $this->auto_columns_fit = $value;
+    }
+
+    /*
     * region : Spreadsheet region/language setting (e.g., `en-US`, `fr-FR`). Influences number formatting, date parsing, and locale‑specific behavior.
     */ 
     public $region;
@@ -200,6 +230,14 @@ class ConvertWorksheetToPdfRequest extends BaseApiRequest
         // query params : fonts_location
         if ($this->fonts_location !== null) {
             $queryParams['fontsLocation'] = ObjectSerializer::toQueryValue($this->fonts_location);
+        }
+        // query params : auto_rows_fit
+        if ($this->auto_rows_fit !== null) {
+            $queryParams['AutoRowsFit'] = ObjectSerializer::toQueryValue($this->auto_rows_fit);
+        }
+        // query params : auto_columns_fit
+        if ($this->auto_columns_fit !== null) {
+            $queryParams['AutoColumnsFit'] = ObjectSerializer::toQueryValue($this->auto_columns_fit);
         }
         // query params : region
         if ($this->region !== null) {
@@ -287,7 +325,7 @@ class ConvertWorksheetToPdfRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.5';
+        $defaultHeaders['x-aspose-client-version'] = '26.6.4';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

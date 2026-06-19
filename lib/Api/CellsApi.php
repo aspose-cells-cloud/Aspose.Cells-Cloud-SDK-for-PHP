@@ -40,6 +40,8 @@ use Aspose\Cells\Cloud\ObjectSerializer;
 use Aspose\Cells\Cloud\Request\DecomposeUserTaskRequest;
 use Aspose\Cells\Cloud\Request\TranslateSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\TranslateTextFileRequest;
+use Aspose\Cells\Cloud\Request\ReportAIAnalysisRequest;
+use Aspose\Cells\Cloud\Request\SummarizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
 use Aspose\Cells\Cloud\Request\PostAccessTokenRequest;
@@ -1057,6 +1059,34 @@ class CellsApi
         $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
         list($response) = $this->execute($requesData,$returnType);
         return  $response;}
+
+    /// <summary>
+    /// </summary>
+    /// <param name="request">Request. <see cref="ReportAIAnalysisRequest" /></param>
+    public function reportAIAnalysis( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Summarizes spreadsheet content using AI and returns the summary as a downloadable text file.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SummarizeSpreadsheetRequest" /></param>
+    public function summarizeSpreadsheet( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
 
     /// <summary>
     /// The Aggregate by Color API provides a convenient way to perform calculations on cells that share the same fill or font color. This API supports a range of aggregate operations, including count, sum, maximum value, minimum value, and average value, enabling you to analyze and summarize data based on color distinctions.

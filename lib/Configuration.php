@@ -87,7 +87,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Aspose-Cells-Cloud/26.5/php';
+    protected $userAgent = 'Aspose-Cells-Cloud/26.6.4/php';
 
     /**
      * Debug switch (default set to false)
@@ -396,7 +396,7 @@ class Configuration
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 4.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 26.5' . PHP_EOL;
+        $report .= '    SDK Package Version: 26.6.4' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

@@ -306,7 +306,7 @@ class PostUnhideWorksheetColumnsRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.5';
+        $defaultHeaders['x-aspose-client-version'] = '26.6.4';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
