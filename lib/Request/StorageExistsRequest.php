@@ -161,7 +161,7 @@ class StorageExistsRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.6.4';
+        $defaultHeaders['x-aspose-client-version'] = '26.7';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

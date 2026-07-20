@@ -44,6 +44,7 @@ use Aspose\Cells\Cloud\Request\ReportAIAnalysisRequest;
 use Aspose\Cells\Cloud\Request\SummarizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
+use Aspose\Cells\Cloud\Request\CalculationFormulaRequest;
 use Aspose\Cells\Cloud\Request\PostAccessTokenRequest;
 use Aspose\Cells\Cloud\Request\GetAsposeCellsCloudStatusRequest;
 use Aspose\Cells\Cloud\Request\CheckCloudServiceHealthRequest;
@@ -103,6 +104,7 @@ use Aspose\Cells\Cloud\Request\GetStructureInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ProtectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\UnprotectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SpreadsheetDigitalsignatureRequest;
+use Aspose\Cells\Cloud\Request\SmartMarkerTemplateRequest;
 use Aspose\Cells\Cloud\Request\SearchAllTextItemsInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetAllTextItemsRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetContentRequest;
@@ -550,6 +552,7 @@ use Aspose\Cells\Cloud\Model\BrokenLinksResponse;
 use Aspose\Cells\Cloud\Model\CellsCloudFileInfoResponse;
 use Aspose\Cells\Cloud\Model\CellsCloudPublicKeyResponse;
 use Aspose\Cells\Cloud\Model\CellsCloudResponse;
+use Aspose\Cells\Cloud\Model\FormulaCalculateResultResponse;
 use Aspose\Cells\Cloud\Model\SaveResponse;
 use Aspose\Cells\Cloud\Model\SearchResponse;
 use Aspose\Cells\Cloud\Model\ImageOrPrintOptions;
@@ -1061,6 +1064,7 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Intelligently analyzes spreadsheet data, identifies business scenarios, and generates professional data analysis reports.
     /// </summary>
     /// <param name="request">Request. <see cref="ReportAIAnalysisRequest" /></param>
     public function reportAIAnalysis( $request)
@@ -1104,6 +1108,22 @@ class CellsApi
     /// </summary>
     /// <param name="request">Request. <see cref="MathCalculateRequest" /></param>
     public function mathCalculate( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// </summary>
+    /// <param name="request">Request. <see cref="CalculationFormulaRequest" /></param>
+    public function calculationFormula( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';
@@ -2055,6 +2075,22 @@ class CellsApi
     /// </summary>
     /// <param name="request">Request. <see cref="SpreadsheetDigitalsignatureRequest" /></param>
     public function spreadsheetDigitalsignature( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// </summary>
+    /// <param name="request">Request. <see cref="SmartMarkerTemplateRequest" /></param>
+    public function smartMarkerTemplate( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';
