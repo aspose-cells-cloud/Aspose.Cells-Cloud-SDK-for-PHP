@@ -46,18 +46,31 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Run Example Codes
-      shell: cmd
+      shell: pwsh
       run: |
         cd examples
         .\composer.bat install --prefer-dist --no-progress
-        php .\Example_QuickStart.php
-        php .\Conversion\Example_ConvertChart.php
-        php .\Conversion\Example_ConvertExcel.php
-        php .\Conversion\Example_ConvertRange.php
-        php .\Conversion\Example_ConvertTable.php
-        php .\Conversion\Example_ConvertWorksheet.php
-        php .\Management\Example_CloudStorageManagement.php
-        php .\DataProcessing\Example_ExcelSplit.php
-        php .\TextProcessing\Example_TextProcessing.php
-        php .\Transform\Example_DataCleaning.php
-        php .\Transform\Example_FixExcelSpacesAndLineBreaks.php
+        $files = Get-ChildItem -Recurse -Filter *.php | Where-Object { $_.Name -notlike '*vendor*' } | Sort-Object FullName
+        $total = $files.Count
+        $passed = 0
+        $failed = @()
+        foreach ($f in $files) {
+          Write-Host "===[$($passed + $failed.Count + 1)/$total] Running: $($f.FullName)]===" -ForegroundColor Cyan
+          $exitCode = 0
+          php "$($f.FullName)" 2>&1 | Out-Host
+          $exitCode = $LASTEXITCODE
+          if ($exitCode -eq 0) {
+            $passed++
+            Write-Host "  PASSED" -ForegroundColor Green
+          } else {
+            $failed += $f.Name
+            Write-Host "  FAILED (exit code: $exitCode)" -ForegroundColor Red
+          }
+        }
+        Write-Host ""
+        Write-Host "===== Results: $passed PASSED, $($failed.Count) FAILED =====" -ForegroundColor $(if ($failed.Count -eq 0) { 'Green' } else { 'Red' })
+        if ($failed.Count -gt 0) {
+          Write-Host "Failed files:" -ForegroundColor Red
+          $failed | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+          exit 1
+        }
