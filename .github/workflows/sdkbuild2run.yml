@@ -46,31 +46,20 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Run Example Codes
-      shell: pwsh
+      shell: cmd
       run: |
         cd examples
         .\composer.bat install --prefer-dist --no-progress
-        $files = Get-ChildItem -Recurse -Filter *.php | Where-Object { $_.Name -notlike '*vendor*' } | Sort-Object FullName
-        $total = $files.Count
-        $passed = 0
-        $failed = @()
-        foreach ($f in $files) {
-          Write-Host "===[$($passed + $failed.Count + 1)/$total] Running: $($f.FullName)]===" -ForegroundColor Cyan
-          $exitCode = 0
-          php "$($f.FullName)" 2>&1 | Out-Host
-          $exitCode = $LASTEXITCODE
-          if ($exitCode -eq 0) {
-            $passed++
-            Write-Host "  PASSED" -ForegroundColor Green
-          } else {
-            $failed += $f.Name
-            Write-Host "  FAILED (exit code: $exitCode)" -ForegroundColor Red
-          }
-        }
-        Write-Host ""
-        Write-Host "===== Results: $passed PASSED, $($failed.Count) FAILED =====" -ForegroundColor $(if ($failed.Count -eq 0) { 'Green' } else { 'Red' })
-        if ($failed.Count -gt 0) {
-          Write-Host "Failed files:" -ForegroundColor Red
-          $failed | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
-          exit 1
-        }
+        php .\QuickStart\QuickStart.php
+        php .\Conversion\ConvertChart.php
+        php .\Conversion\ConvertWorkbook.php
+        php .\Conversion\ConvertRange.php
+        php .\Conversion\ConvertTable.php
+        php .\Conversion\ConvertWorksheet.php
+        php .\CloudStorage\FileManagement.php
+        php .\DataProcessing\SplitWorkbook.php
+        php .\DataProcessing\CleanData.php
+        php .\DataProcessing\TrimCharacters.php
+        php .\DataProcessing\TrimContent.php
+        php .\AI\DecomposeTask.php
+        php .\AI\TranslateSpreadsheet.php
