@@ -42,6 +42,7 @@ use Aspose\Cells\Cloud\Request\TranslateSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\TranslateTextFileRequest;
 use Aspose\Cells\Cloud\Request\ReportAIAnalysisRequest;
 use Aspose\Cells\Cloud\Request\SummarizeSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\CategorizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
 use Aspose\Cells\Cloud\Request\CalculationFormulaRequest;
@@ -1080,6 +1081,23 @@ class CellsApi
     /// </summary>
     /// <param name="request">Request. <see cref="SummarizeSpreadsheetRequest" /></param>
     public function summarizeSpreadsheet( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// AI-powered data categorization: Automatically classifies spreadsheet column data into logical groups.
+    /// </summary>
+    /// <param name="request">Request. <see cref="CategorizeSpreadsheetRequest" /></param>
+    public function categorizeSpreadsheet( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';

@@ -1,6 +1,6 @@
 <?php
 /*--------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="SpecRequest.cs">
+ * <copyright company="Aspose" file="CategorizeSpreadsheetRequest.cs">
  *   Copyright (c) 2026 Aspose.Cells Cloud
  * </copyright>
  * <summary>
@@ -38,10 +38,10 @@ use Aspose\Cells\Cloud\HeaderSelector;
 use Asapose\Cells\Cloud\Configuration;
 
 /*
- * Request model for  Spec operation.
+ * Request model for  CategorizeSpreadsheet operation.
  */
 
-class SpecRequest extends BaseApiRequest
+class CategorizeSpreadsheetRequest extends BaseApiRequest
 {
     public $expandQueryParameters;
 
@@ -51,18 +51,63 @@ class SpecRequest extends BaseApiRequest
     }
 
     /*
-    * version : 
+    * Spreadsheet : Upload spreadsheet file.
     */ 
-    public $version;
+    public $spreadsheet;
 
-    public function getVersion()
+    public function getSpreadsheet()
     {
-        return $this->version;
+        return $this->spreadsheet;
     }
 
-    public function setVersion($value)
+    public function setSpreadsheet($value)
     {
-        $this->version = $value;
+        $this->spreadsheet = $value;
+    }
+
+    /*
+    * targetColumn : The column name to categorize (e.g., "Expense Item", "Product Name"). Required.
+    */ 
+    public $target_column;
+
+    public function getTargetColumn()
+    {
+        return $this->target_column;
+    }
+
+    public function setTargetColumn($value)
+    {
+        $this->target_column = $value;
+    }
+
+    /*
+    * sheetName : Optional: The worksheet name to process. If not specified, all worksheets will be processed.
+    */ 
+    public $sheet_name;
+
+    public function getSheetName()
+    {
+        return $this->sheet_name;
+    }
+
+    public function setSheetName($value)
+    {
+        $this->sheet_name = $value;
+    }
+
+    /*
+    * newColumnName : Optional: Name for the new categorization column (default: "AI Category").
+    */ 
+    public $new_column_name;
+
+    public function getNewColumnName()
+    {
+        return $this->new_column_name;
+    }
+
+    public function setNewColumnName($value)
+    {
+        $this->new_column_name = $value;
     }
 
     /*
@@ -95,30 +140,47 @@ class SpecRequest extends BaseApiRequest
         $this->password = $value;
     }
 
-    public function __construct( $version = null )
+    public function __construct( $spreadsheet = null,$target_column = null )
     {        
-        $this->version = $version; 
+        $this->spreadsheet = $spreadsheet; 
+        $this->target_column = $target_column; 
     }
 
     public function createHttpRequest($headerSelector,$config)
     {
-        // verify the required parameter 'version' is set
-        if ($this->version === null) {
+        // verify the required parameter 'spreadsheet' is set
+        if ($this->spreadsheet === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $version when calling Spec'
+                'Missing the required parameter $spreadsheet when calling CategorizeSpreadsheet'
             );
         }
 
 
-        $resourcePath = 'v4.0/cells/swagger/spec';
+        // verify the required parameter 'target_column' is set
+        if ($this->target_column === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $target_column when calling CategorizeSpreadsheet'
+            );
+        }
+
+
+        $resourcePath = 'v4.0/cells/ai/categorize/spreadsheet';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;    
-        // query params : version
-        if ($this->version !== null) {
-            $queryParams['version'] = ObjectSerializer::toQueryValue($this->version);
+        // query params : target_column
+        if ($this->target_column !== null) {
+            $queryParams['targetColumn'] = ObjectSerializer::toQueryValue($this->target_column);
+        }
+        // query params : sheet_name
+        if ($this->sheet_name !== null) {
+            $queryParams['sheetName'] = ObjectSerializer::toQueryValue($this->sheet_name);
+        }
+        // query params : new_column_name
+        if ($this->new_column_name !== null) {
+            $queryParams['newColumnName'] = ObjectSerializer::toQueryValue($this->new_column_name);
         }
         // query params : region
         if ($this->region !== null) {
@@ -133,6 +195,17 @@ class SpecRequest extends BaseApiRequest
                 $queryParams[$queryName] = ObjectSerializer::toQueryValue($queryValue);
             }
         }
+        if ($this->spreadsheet !== null) {
+            $multipart = true;
+            if( is_array($this->spreadsheet)){
+                foreach($this->spreadsheet as $key => $value) {
+                    $formParams[basename($key)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($value), 'rb');
+                }
+            }else {
+                $formParams[basename($this->spreadsheet)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($this->spreadsheet), 'rb');
+            }
+        }
+
     // body params
         $_tempBody = null;
         $_tempBodyName =null;
@@ -204,7 +277,7 @@ class SpecRequest extends BaseApiRequest
 
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
-            'GET',
+            'PUT',
             $config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

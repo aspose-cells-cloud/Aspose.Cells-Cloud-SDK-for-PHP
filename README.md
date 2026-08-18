@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.7.0-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.7.0?style=for-the-badge)
+![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.8.0-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.8.0?style=for-the-badge)
 
 <p align="center">
   <a href="#english">English</a> |
@@ -36,7 +36,7 @@ To begin with Aspose.Cells Cloud, here's what you need to do:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.7.0"
+       "aspose/cells-cloud": "^26.8.0"
      }
    }
    ```
@@ -137,16 +137,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 - **Import/Export** — Facilitates importing data from various sources into spreadsheets and exporting spreadsheet data to other formats.
 - **Security Management** — Offers a range of security features like data encryption, access control, and permission management to safeguard the security and integrity of spreadsheet data.
 
-### Features & Enhancements in Version v26.7
+### Features & Enhancements in Version v26.8
 
-Full list of issues covering all changes in this release:
-
-| **Summary**                                                                        | **Category** |
-| :--------------------------------------------------------------------------------- | :----------- |
-| Fix AutoFitsCanAutoFitsAttribute value data type.                                  | Bug          |
-| Support for the calculation formula in Aspose.Cells Cloud 4.0 Web APIs.            | New Feature  |
-| Support for the smart template in Aspose.Cells Cloud 4.0 Web APIs.                 | New Feature  |
-| Fix calc error about MathCalculate Web API.                                        | Bug          |
+| **Summary** | **Category** |
+| :--- | :--- |
+| Enchent smart template feature. | Improvement |
+| A new AI data analysis API has been added. | New Feature |
 
 ### Available SDKs
 
@@ -199,7 +195,7 @@ The Aspose.Cells Cloud SDK is available in multiple popular programming language
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.7.0"
+       "aspose/cells-cloud": "^26.8.0"
      }
    }
    ```
@@ -285,16 +281,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### 版本 v26.7 中的功能与增强
-
-此版本中所有变更的完整列表：
+### 版本 v26.8 中的功能与增强
 
 | **摘要**                                                                           | **类别**   |
 | :--------------------------------------------------------------------------------- | :--------- |
-| 修复 AutoFitsCanAutoFitsAttribute 值数据类型。                                       | Bug        |
-| 支持 Aspose.Cells Cloud 4.0 Web API 中的计算公式。                                    | 新功能      |
-| 支持 Aspose.Cells Cloud 4.0 Web API 中的智能模板。                                    | 新功能      |
-| 修复 MathCalculate Web API 的计算错误。                                               | Bug        |
+| Enchent smart template feature.                                                    | Improvement |
+| A new AI data analysis API has been added.                                          | New Feature |
 
 ---
 
@@ -325,7 +317,7 @@ Aspose.Cells Cloud を始めるには、以下の手順に従ってください�
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.7.0"
+       "aspose/cells-cloud": "^26.8.0"
      }
    }
    ```
@@ -411,16 +403,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### バージョン v26.7 の機能と改善点
-
-このリリースのすべての変更を含む問題の完全なリスト：
+### バージョン v26.8 の機能と改善点
 
 | **概要**                                                                           | **カテゴリ** |
 | :--------------------------------------------------------------------------------- | :----------- |
-| AutoFitsCanAutoFitsAttribute 値のデータ型を修正。                                     | Bug          |
-| Aspose.Cells Cloud 4.0 Web API での計算式をサポート。                                  | New Feature  |
-| Aspose.Cells Cloud 4.0 Web API でのスマートテンプレートをサポート。                     | New Feature  |
-| MathCalculate Web API の計算エラーを修正。                                             | Bug          |
+| Enchent smart template feature.                                                    | Improvement |
+| A new AI data analysis API has been added.                                          | New Feature |
 
 ---
 
@@ -451,7 +439,7 @@ Um mit Aspose.Cells Cloud zu beginnen, gehen Sie wie folgt vor:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.7.0"
+       "aspose/cells-cloud": "^26.8.0"
      }
    }
    ```
@@ -537,16 +525,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### Funktionen & Verbesserungen in Version v26.7
-
-Vollständige Liste der Issues zu allen Änderungen in diesem Release:
+### Funktionen & Verbesserungen in Version v26.8
 
 | **Zusammenfassung**                                                                | **Kategorie** |
 | :--------------------------------------------------------------------------------- | :------------ |
-| Datentyp des AutoFitsCanAutoFitsAttribute-Werts behoben.                           | Bug           |
-| Unterstützung für Berechnungsformeln in Aspose.Cells Cloud 4.0 Web APIs.           | New Feature   |
-| Unterstützung für intelligente Vorlagen in Aspose.Cells Cloud 4.0 Web APIs.        | New Feature   |
-| Berechnungsfehler bei der MathCalculate Web API behoben.                           | Bug           |
+| Enchent smart template feature.                                                    | Improvement |
+| A new AI data analysis API has been added.                                          | New Feature |
 
 ---
 
