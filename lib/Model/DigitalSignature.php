@@ -50,7 +50,7 @@ class DigitalSignature
         'sign_time' => 'string',
         'id' => 'string',
         'password' => 'string',
-        'image' => '[]',
+        'image' => 'int[]',
         'provider_id' => 'string',
         'is_valid' => 'bool',
         'x_ad_es_type' => 'string'
@@ -371,7 +371,7 @@ class DigitalSignature
    /**
      * Gets image
      *
-     * @return []
+     * @return int[]
      */
     public function getImage()
     {

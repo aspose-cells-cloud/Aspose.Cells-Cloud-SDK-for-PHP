@@ -6,7 +6,7 @@
          convertWarningsToExceptions="true"
          stopOnFailure="false">
     <testsuites>
-        <testsuite>
+        <testsuite name="IntegrationTests">
             <directory>./integrationtests/Dynabic</directory>
             <directory>./integrationtests/CellsCloud30</directory>
         </testsuite>

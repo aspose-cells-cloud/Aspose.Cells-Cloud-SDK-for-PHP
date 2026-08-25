@@ -163,6 +163,109 @@ class ObjectSerializer
     }
 
     /**
+     * Normalize a File-typed form value into a list of multipart elements.
+     *
+     * Each returned element is ready to pass to GuzzleHttp\Psr7\MultipartStream:
+     *   ['name' => ..., 'filename' => ..., 'contents' => string|resource|StreamInterface]
+     *
+     * Accepted input forms (detected at runtime):
+     *   - string                : a readable local path, or raw binary content when the
+     *                             string cannot be opened as a file
+     *   - \SplFileObject        : a file object
+     *   - resource              : an already-open stream handle (e.g. fopen())
+     *   - StreamInterface       : a PSR-7 stream
+     *   - int[] (sequential 0-255) : a byte array, packed into a binary string
+     *   - array<string, mixed>  : multiple files, the key is used as the file name
+     *   - array<int, mixed>     : multiple files, auto-named <paramName>_<index>
+     *
+     * @param mixed  $value       the value set on the request
+     * @param string $paramName   the operation parameter name, used as the default file name
+     * @param string|null $explicitName an explicit file name (from a map key) that overrides the default
+     *
+     * @return array[] list of multipart elements
+     */
+    public static function toMultipartFiles($value, $paramName, $explicitName = null)
+    {
+        // array: byte array, map of files, or list of files
+        if (is_array($value)) {
+            $isList = array_keys($value) === range(0, count($value) - 1);
+            if ($isList) {
+                $allBytes = count($value) > 0;
+                foreach ($value as $v) {
+                    if (!is_int($v) || $v < 0 || $v > 255) {
+                        $allBytes = false;
+                        break;
+                    }
+                }
+                if ($allBytes) {
+                    $name = ($explicitName !== null) ? $explicitName : $paramName;
+                    return [[
+                        'name' => $name,
+                        'filename' => $name,
+                        'contents' => pack('C*', ...$value),
+                    ]];
+                }
+            }
+            $elements = [];
+            foreach ($value as $key => $item) {
+                $childName = $isList ? $paramName . '_' . $key : (string)$key;
+                foreach (self::toMultipartFiles($item, $paramName, $childName) as $el) {
+                    $elements[] = $el;
+                }
+            }
+            return $elements;
+        }
+        // file object
+        if ($value instanceof \SplFileObject) {
+            $path = $value->getRealPath();
+            if ($path === false) {
+                $path = $value->getPathname();
+            }
+            $handle = @fopen($path, 'rb');
+            $name = ($explicitName !== null) ? $explicitName : basename($path);
+            return [[
+                'name' => $name,
+                'filename' => $name,
+                'contents' => ($handle !== false) ? $handle : (string)$path,
+            ]];
+        }
+        // open stream handle
+        if (is_resource($value)) {
+            $name = ($explicitName !== null) ? $explicitName : $paramName;
+            return [['name' => $name, 'filename' => $name, 'contents' => $value]];
+        }
+        // PSR-7 stream
+        if ($value instanceof \Psr\Http\Message\StreamInterface) {
+            $name = ($explicitName !== null) ? $explicitName : $paramName;
+            return [['name' => $name, 'filename' => $name, 'contents' => $value]];
+        }
+        // string: a readable path, otherwise raw binary content.
+        // A null byte or an empty string can never be a real path, so reject
+        // those strings up front (fopen() throws a ValueError on them in PHP 8).
+        if (is_string($value)) {
+            $handle = ($value !== '' && strpos($value, "\0") === false) ? @fopen($value, 'rb') : false;
+            $name = ($explicitName !== null)
+                ? $explicitName
+                : (($handle !== false) ? basename($value) : $paramName);
+            return [[
+                'name' => $name,
+                'filename' => $name,
+                'contents' => ($handle !== false) ? $handle : $value,
+            ]];
+        }
+        // other scalars: send the string representation
+        if (is_scalar($value)) {
+            $name = ($explicitName !== null) ? $explicitName : $paramName;
+            return [[
+                'name' => $name,
+                'filename' => $name,
+                'contents' => (string)$value,
+            ]];
+        }
+        return [];
+    }
+
+    /**
      * Take value and turn it into a string suitable for inclusion in
      * the parameter. If it's a string, pass through unchanged
      * If it's a datetime object, format it in ISO8601
@@ -241,6 +344,11 @@ class ObjectSerializer
             return $deserialized;
         } elseif (strcasecmp(substr($class, -2), '[]') === 0) {
             $subClass = substr($class, 0, -2);
+            if ($subClass === '') {
+                // Array type with no declared element type: pass the raw array
+                // through unchanged rather than recursing with an empty class.
+                return (array)$data;
+            }
             $values = [];
             foreach ($data as $key => $value) {
                 $values[] = self::deserialize($value, $subClass, null);

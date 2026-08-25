@@ -244,12 +244,11 @@ class ConvertChartToPdfRequest extends BaseApiRequest
         }
         if ($this->spreadsheet !== null) {
             $multipart = true;
-            if( is_array($this->spreadsheet)){
-                foreach($this->spreadsheet as $key => $value) {
-                    $formParams[basename($key)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($value), 'rb');
-                }
-            }else {
-                $formParams[basename($this->spreadsheet)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($this->spreadsheet), 'rb');
+            foreach (ObjectSerializer::toMultipartFiles($this->spreadsheet, 'Spreadsheet') as $formElement) {
+                $formParams[$formElement['name']] = [
+                    'filename' => $formElement['filename'],
+                    'contents' => $formElement['contents']
+                ];
             }
         }
 
@@ -271,10 +270,10 @@ class ConvertChartToPdfRequest extends BaseApiRequest
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
+                    $multipartContents[] = array_merge(
+                        ['name' => $formParamName],
+                        $formParamValue
+                    );
                 }
                 if (isset($_tempBody)) {
                     $httpBody = $_tempBody;
@@ -315,7 +314,7 @@ class ConvertChartToPdfRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.8';
+        $defaultHeaders['x-aspose-client-version'] = '26.7';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

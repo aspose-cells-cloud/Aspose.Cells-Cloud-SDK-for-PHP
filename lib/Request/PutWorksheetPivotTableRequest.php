@@ -263,10 +263,10 @@ class PutWorksheetPivotTableRequest extends BaseApiRequest
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
+                    $multipartContents[] = array_merge(
+                        ['name' => $formParamName],
+                        $formParamValue
+                    );
                 }
                 if (isset($_tempBody)) {
                     $httpBody = $_tempBody;
@@ -307,7 +307,7 @@ class PutWorksheetPivotTableRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.8';
+        $defaultHeaders['x-aspose-client-version'] = '26.7';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
