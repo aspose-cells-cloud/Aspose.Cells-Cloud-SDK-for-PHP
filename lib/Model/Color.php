@@ -46,10 +46,10 @@ class Color
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'a' => 'int',
-        'r' => 'int',
-        'g' => 'int',
-        'b' => 'int'
+        'a' => '',
+        'r' => '',
+        'g' => '',
+        'b' => ''
     ];
 
     /**
@@ -231,7 +231,7 @@ class Color
    /**
      * Gets a
      *
-     * @return int
+     * @return 
      */
     public function getA()
     {
@@ -254,7 +254,7 @@ class Color
    /**
      * Gets r
      *
-     * @return int
+     * @return 
      */
     public function getR()
     {
@@ -277,7 +277,7 @@ class Color
    /**
      * Gets g
      *
-     * @return int
+     * @return 
      */
     public function getG()
     {
@@ -300,7 +300,7 @@ class Color
    /**
      * Gets b
      *
-     * @return int
+     * @return 
      */
     public function getB()
     {

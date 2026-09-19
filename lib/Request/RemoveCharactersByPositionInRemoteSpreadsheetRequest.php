@@ -352,10 +352,10 @@ class RemoveCharactersByPositionInRemoteSpreadsheetRequest extends BaseApiReques
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = array_merge(
-                        ['name' => $formParamName],
-                        $formParamValue
-                    );
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
                 }
                 if (isset($_tempBody)) {
                     $httpBody = $_tempBody;
@@ -396,7 +396,7 @@ class RemoveCharactersByPositionInRemoteSpreadsheetRequest extends BaseApiReques
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.7';
+        $defaultHeaders['x-aspose-client-version'] = '26.9';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

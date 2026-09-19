@@ -131,11 +131,12 @@ class ReportAIAnalysisRequest extends BaseApiRequest
         }
         if ($this->spreadsheet !== null) {
             $multipart = true;
-            foreach (ObjectSerializer::toMultipartFiles($this->spreadsheet, 'Spreadsheet') as $formElement) {
-                $formParams[$formElement['name']] = [
-                    'filename' => $formElement['filename'],
-                    'contents' => $formElement['contents']
-                ];
+            if( is_array($this->spreadsheet)){
+                foreach($this->spreadsheet as $key => $value) {
+                    $formParams[basename($key)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($value), 'rb');
+                }
+            }else {
+                $formParams[basename($this->spreadsheet)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($this->spreadsheet), 'rb');
             }
         }
 
@@ -157,10 +158,10 @@ class ReportAIAnalysisRequest extends BaseApiRequest
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = array_merge(
-                        ['name' => $formParamName],
-                        $formParamValue
-                    );
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
                 }
                 if (isset($_tempBody)) {
                     $httpBody = $_tempBody;
@@ -201,7 +202,7 @@ class ReportAIAnalysisRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.7';
+        $defaultHeaders['x-aspose-client-version'] = '26.9';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

@@ -52,7 +52,7 @@ class RenderingWatermark
         'is_background' => 'bool',
         'text' => 'string',
         'font' => '\Aspose\Cells\Cloud\Model\RenderingFont',
-        'image' => 'int[]',
+        'image' => '[]',
         'h_alignment' => 'string',
         'v_alignment' => 'string',
         'offset_x' => 'double',
@@ -453,7 +453,7 @@ class RenderingWatermark
    /**
      * Gets image
      *
-     * @return int[]
+     * @return []
      */
     public function getImage()
     {

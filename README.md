@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.8.0-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.8.0?style=for-the-badge)
+![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.9.0-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.9.0?style=for-the-badge)
 
 <p align="center">
   <a href="#english">English</a> |
@@ -36,7 +36,7 @@ To begin with Aspose.Cells Cloud, here's what you need to do:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.8.0"
+       "aspose/cells-cloud": "^26.9.0"
      }
    }
    ```
@@ -137,12 +137,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 - **Import/Export** — Facilitates importing data from various sources into spreadsheets and exporting spreadsheet data to other formats.
 - **Security Management** — Offers a range of security features like data encryption, access control, and permission management to safeguard the security and integrity of spreadsheet data.
 
-### Features & Enhancements in Version v26.8
+### Features & Enhancements in Version v26.9
 
-| **Summary** | **Category** |
-| :--- | :--- |
-| Enchent smart template feature. | Improvement |
-| A new AI data analysis API has been added. | New Feature |
+| **Summary**                                                                                                   | **Category** |
+| :------------------------------------------------------------------------------------------------------------ | :----------- |
+| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement  |
+| Fix code-gen/swagger specification for Aspose.Cells Cloud. | Bug  |
 
 ### Available SDKs
 
@@ -195,7 +195,7 @@ The Aspose.Cells Cloud SDK is available in multiple popular programming language
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.8.0"
+       "aspose/cells-cloud": "^26.9.0"
      }
    }
    ```
@@ -281,12 +281,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### 版本 v26.8 中的功能与增强
+### 版本 v26.9 中的功能与增强
 
 | **摘要**                                                                           | **类别**   |
 | :--------------------------------------------------------------------------------- | :--------- |
-| Enchent smart template feature.                                                    | Improvement |
-| A new AI data analysis API has been added.                                          | New Feature |
+| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
+| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug        |
 
 ---
 
@@ -317,7 +317,7 @@ Aspose.Cells Cloud を始めるには、以下の手順に従ってください�
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.8.0"
+       "aspose/cells-cloud": "^26.9.0"
      }
    }
    ```
@@ -403,12 +403,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### バージョン v26.8 の機能と改善点
+### バージョン v26.9 の機能と改善点
 
 | **概要**                                                                           | **カテゴリ** |
 | :--------------------------------------------------------------------------------- | :----------- |
-| Enchent smart template feature.                                                    | Improvement |
-| A new AI data analysis API has been added.                                          | New Feature |
+| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
+| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug         |
 
 ---
 
@@ -439,7 +439,7 @@ Um mit Aspose.Cells Cloud zu beginnen, gehen Sie wie folgt vor:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.8.0"
+       "aspose/cells-cloud": "^26.9.0"
      }
    }
    ```
@@ -508,8 +508,8 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 | [MARKDOWN](https://docs.fileformat.com/word-processing/md/)       | Repräsentiert ein Markdown-Dokument.                                                                                                                                                  |           | &radic;       |
 | [SXC](https://docs.fileformat.com/spreadsheet/sxc/)               | Ein XML-basiertes Format, das von OpenOffice und StarOffice verwendet wird                                                                                                            | &radic;   | &radic;       |
 | [FODS](https://docs.fileformat.com/spreadsheet/fods/)             | Ein Open Document-Format, das als flaches XML gespeichert wird.                                                                                                                       | &radic;   | &radic;       |
-| [DOCX](https://docs.fileformat.com/word-processing/docx/)         | Ein bekanntes Format für Microsoft Word-Dokumente, das eine Kombination aus XML- und Binärdateien ist.                                                                                |           | &radic;       |
-| [PPTX](https://docs.fileformat.com/presentation/pptx/)            | Das PPTX-Format basiert auf dem offenen XML-Präsentationsdateiformat von Microsoft PowerPoint.                                                                                        |           | &radic;       |
+| [DOCX](https://docs.fileformat.com/word-processing/docx/)         | Ein bekanntes Format für Microsoft Word-Dokumente, das eine Kombination aus XML- und Binärdateien ist.                                                                              |           | &radic;       |
+| [PPTX](https://docs.fileformat.com/presentation/pptx/)            | Das PPTX-Format basiert auf dem offenen XML-Präsentationsdateiformat von Microsoft PowerPoint.                                                                                    |           | &radic;       |
 | [OTS](https://docs.fileformat.com/spreadsheet/ots/)               | OTS (OpenDocument Spreadsheet-Vorlage).                                                                                                                                               | &radic;   | &radic;       |
 | [XML](https://docs.fileformat.com/web/xml/)                       | XML-Datei.                                                                                                                                                                            | &radic;   | &radic;       |
 | [HTM](https://docs.fileformat.com/web/htm/)                       | HTM-Datei.                                                                                                                                                                            | &radic;   | &radic;       |
@@ -525,12 +525,12 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### Funktionen & Verbesserungen in Version v26.8
+### Funktionen & Verbesserungen in Version v26.9
 
 | **Zusammenfassung**                                                                | **Kategorie** |
 | :--------------------------------------------------------------------------------- | :------------ |
-| Enchent smart template feature.                                                    | Improvement |
-| A new AI data analysis API has been added.                                          | New Feature |
+| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
+| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug          |
 
 ---
 

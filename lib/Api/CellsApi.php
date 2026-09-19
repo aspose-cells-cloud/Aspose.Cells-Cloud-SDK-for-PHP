@@ -1,6 +1,6 @@
 <?php
 /*--------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="CellsCloudApi.cs">
+ * <copyright company="Aspose" file="CellsApi.cs">
  *   Copyright (c) 2026 Aspose.Cells Cloud
  * </copyright>
  * <summary>
@@ -42,6 +42,7 @@ use Aspose\Cells\Cloud\Request\TranslateSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\TranslateTextFileRequest;
 use Aspose\Cells\Cloud\Request\ReportAIAnalysisRequest;
 use Aspose\Cells\Cloud\Request\SummarizeSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\CategorizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
 use Aspose\Cells\Cloud\Request\CalculationFormulaRequest;
@@ -953,7 +954,7 @@ use Aspose\Cells\Cloud\Model\DiscoverPivotTable;
 use Aspose\Cells\Cloud\Model\ExcelDataStatistics;
 use Aspose\Cells\Cloud\Model\WorksheetDataStatistics;
 
-class AsposeCellsCloudApi
+class CellsApi
 {    
 
     /**
@@ -978,7 +979,7 @@ class AsposeCellsCloudApi
      * @param HeaderSelector  $selector
      */
     public function __construct(
-        $clientId,$clientSecret,$version ="v4.0",$baseUrl="https://api.aspose.cloud"
+        $clientId,$clientSecret,$version ="v3.0",$baseUrl="https://api.aspose.cloud"
     ) {
         $this->_clientId = $clientId;
         $this->_clientSecret = $clientSecret;
@@ -995,7 +996,7 @@ class AsposeCellsCloudApi
         if(  empty( $clientId)  || empty( $clientId) ) {
             $this->_needAuth = false;
         }else{
-            $this->config ->setAccessToken ( $this->getAccessToken($grantType, $clientId, $clientSecret, $version));
+            $this->config ->setAccessToken ( $this->getAccessToken($grantType, $clientId, $clientSecret,$version));
         }
         $this->_getAccessTokenTime = date('y-m-d h:i:s');
         $this->config->setHost( $defaultHost );
@@ -1080,6 +1081,23 @@ class AsposeCellsCloudApi
     /// </summary>
     /// <param name="request">Request. <see cref="SummarizeSpreadsheetRequest" /></param>
     public function summarizeSpreadsheet( $request , $localOutPath = null)
+    {
+        $this->checkAccessToken();
+        $returnType = '\SplFileObject';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        if ($localOutPath === null) {  
+                return  $response;
+            }else{
+                copy($response->getPathname(),$localOutPath);
+                return $localOutPath;
+            }}
+
+    /// <summary>
+    /// AI-powered data categorization: Automatically classifies spreadsheet column data into logical groups.
+    /// </summary>
+    /// <param name="request">Request. <see cref="CategorizeSpreadsheetRequest" /></param>
+    public function categorizeSpreadsheet( $request , $localOutPath = null)
     {
         $this->checkAccessToken();
         $returnType = '\SplFileObject';
@@ -7058,8 +7076,10 @@ class AsposeCellsCloudApi
                 ];
             } else {
                 $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
+                if ( $request->getMethod() !== 'GET' ){
+                    if ($returnType !== 'string') {
+                        $content = json_decode($content);
+                    }
                 }
             }
 
@@ -7101,7 +7121,7 @@ class AsposeCellsCloudApi
 
         return $options;
     }
-    public function getAccessToken($grant_type, $client_id, $client_secret, $version = "v4.0")
+    public function getAccessToken($grant_type, $client_id, $client_secret ,$version = "v3.0")
     {
         $returnType = '\Aspose\Cells\Cloud\Model\AccessTokenResponse';
 
@@ -7123,7 +7143,10 @@ class AsposeCellsCloudApi
             );
         }
 
-        $resourcePath = '/' . $version . '/cells/connect/token';
+        $resourcePath = '/v3.0/cells/connect/token';
+        if($version === 'v1.1'){
+            $resourcePath = '/oauth2/token';
+        }
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7173,10 +7196,10 @@ class AsposeCellsCloudApi
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = array_merge(
-                        ['name' => $formParamName],
-                        $formParamValue
-                    );
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
