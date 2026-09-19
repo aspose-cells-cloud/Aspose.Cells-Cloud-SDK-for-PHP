@@ -51,6 +51,36 @@ class SmartMarkerTemplateRequest extends BaseApiRequest
     }
 
     /*
+    * datafile : Upload smartmarker template json data file.
+    */ 
+    public $datafile;
+
+    public function getDatafile()
+    {
+        return $this->datafile;
+    }
+
+    public function setDatafile($value)
+    {
+        $this->datafile = $value;
+    }
+
+    /*
+    * templatefile : Upload smartmarker template file.
+    */ 
+    public $templatefile;
+
+    public function getTemplatefile()
+    {
+        return $this->templatefile;
+    }
+
+    public function setTemplatefile($value)
+    {
+        $this->templatefile = $value;
+    }
+
+    /*
     * region : Spreadsheet region/language setting (e.g., `en-US`, `fr-FR`). Influences number formatting, date parsing, and locale‑specific behavior.
     */ 
     public $region;
@@ -80,12 +110,29 @@ class SmartMarkerTemplateRequest extends BaseApiRequest
         $this->password = $value;
     }
 
-    public function __construct(  )
+    public function __construct( $datafile = null,$templatefile = null )
     {        
+        $this->datafile = $datafile; 
+        $this->templatefile = $templatefile; 
     }
 
     public function createHttpRequest($headerSelector,$config)
     {
+        // verify the required parameter 'datafile' is set
+        if ($this->datafile === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $datafile when calling SmartMarkerTemplate'
+            );
+        }
+
+
+        // verify the required parameter 'templatefile' is set
+        if ($this->templatefile === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $templatefile when calling SmartMarkerTemplate'
+            );
+        }
+
 
         $resourcePath = 'v4.0/cells/report/smart/template';
         $formParams = [];
@@ -106,6 +153,27 @@ class SmartMarkerTemplateRequest extends BaseApiRequest
                 $queryParams[$queryName] = ObjectSerializer::toQueryValue($queryValue);
             }
         }
+        if ($this->datafile !== null) {
+            $multipart = true;
+            if( is_array($this->datafile)){
+                foreach($this->datafile as $key => $value) {
+                    $formParams[basename($key)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($value), 'rb');
+                }
+            }else {
+                $formParams[basename($this->datafile)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($this->datafile), 'rb');
+            }
+        }
+        if ($this->templatefile !== null) {
+            $multipart = true;
+            if( is_array($this->templatefile)){
+                foreach($this->templatefile as $key => $value) {
+                    $formParams[basename($key)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($value), 'rb');
+                }
+            }else {
+                $formParams[basename($this->templatefile)] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($this->templatefile), 'rb');
+            }
+        }
+
     // body params
         $_tempBody = null;
         $_tempBodyName =null;
@@ -168,7 +236,7 @@ class SmartMarkerTemplateRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.8';
+        $defaultHeaders['x-aspose-client-version'] = '26.9';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

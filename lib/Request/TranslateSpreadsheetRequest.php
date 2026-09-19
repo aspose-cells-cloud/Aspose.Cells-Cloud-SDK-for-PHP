@@ -81,6 +81,51 @@ class TranslateSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
+    * customEndpoint : Optional. Full Chat Completions endpoint URL.
+    */ 
+    public $custom_endpoint;
+
+    public function getCustomEndpoint()
+    {
+        return $this->custom_endpoint;
+    }
+
+    public function setCustomEndpoint($value)
+    {
+        $this->custom_endpoint = $value;
+    }
+
+    /*
+    * customApiKey : Optional. API key for the custom AI service.
+    */ 
+    public $custom_api_key;
+
+    public function getCustomApiKey()
+    {
+        return $this->custom_api_key;
+    }
+
+    public function setCustomApiKey($value)
+    {
+        $this->custom_api_key = $value;
+    }
+
+    /*
+    * customModel : Optional. Model name to use.
+    */ 
+    public $custom_model;
+
+    public function getCustomModel()
+    {
+        return $this->custom_model;
+    }
+
+    public function setCustomModel($value)
+    {
+        $this->custom_model = $value;
+    }
+
+    /*
     * region : Spreadsheet region/language setting (e.g., `en-US`, `fr-FR`). Influences number formatting, date parsing, and locale‑specific behavior.
     */ 
     public $region;
@@ -143,6 +188,18 @@ class TranslateSpreadsheetRequest extends BaseApiRequest
         // query params : target_language
         if ($this->target_language !== null) {
             $queryParams['targetLanguage'] = ObjectSerializer::toQueryValue($this->target_language);
+        }
+        // query params : custom_endpoint
+        if ($this->custom_endpoint !== null) {
+            $queryParams['customEndpoint'] = ObjectSerializer::toQueryValue($this->custom_endpoint);
+        }
+        // query params : custom_api_key
+        if ($this->custom_api_key !== null) {
+            $queryParams['customApiKey'] = ObjectSerializer::toQueryValue($this->custom_api_key);
+        }
+        // query params : custom_model
+        if ($this->custom_model !== null) {
+            $queryParams['customModel'] = ObjectSerializer::toQueryValue($this->custom_model);
         }
         // query params : region
         if ($this->region !== null) {
@@ -230,7 +287,7 @@ class TranslateSpreadsheetRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.8';
+        $defaultHeaders['x-aspose-client-version'] = '26.9';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
