@@ -301,7 +301,7 @@ class PostUpdateWorksheetRowRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

@@ -1,4 +1,5 @@
-![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.9.0-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.9.0?style=for-the-badge)
+```markdown
+![](https://img.shields.io/badge/aspose.cells%20Cloud%20SDK-26.10-green?style=for-the-badge&logo=php) [![Product Page](https://img.shields.io/badge/Product-0288d1?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://products.aspose.cloud/cells/php/) [![Documentation](https://img.shields.io/badge/Documentation-388e3c?style=for-the-badge&logo=Hugo&logoColor=white)](https://docs.aspose.cloud/cells/) [![API Ref](https://img.shields.io/badge/Reference-f39c12?style=for-the-badge&logo=html5&logoColor=white)](https://reference.aspose.cloud/cells/) [![Examples](https://img.shields.io/badge/Examples-1565c0?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-php/tree/master/Examples) [![Blog](https://img.shields.io/badge/Blog-d32f2f?style=for-the-badge&logo=WordPress&logoColor=white)](https://blog.aspose.cloud/categories/aspose.cells-cloud-product-family/) [![Support](https://img.shields.io/badge/Support-7b1fa2?style=for-the-badge&logo=Discourse&logoColor=white)](https://forum.aspose.cloud/c/cells/7) ![Packagist PHP Version Support](https://img.shields.io/badge/PHP->7.4-777BB4?style=for-the-badge&logo=php&logoColor=white) ![Packagist Downloads](https://img.shields.io/packagist/dt/aspose/cells-sdk-php?style=for-the-badge) [![License](https://img.shields.io/github/license/aspose-cells-cloud/aspose-cells-cloud-go?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-go/blob/master/LICENSE?style=for-the-badge) [![PHP](https://img.shields.io/badge/Composer-require%20aspose/cells--sdk--php-8892BF?logo=php&style=for-the-badge)](https://packagist.org/packages/aspose/cells-sdk-php) ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/aspose-cells-cloud/aspose-cells-cloud-php/26.10?style=for-the-badge)
 
 <p align="center">
   <a href="#english">English</a> |
@@ -36,7 +37,7 @@ To begin with Aspose.Cells Cloud, here's what you need to do:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.9.0"
+       "aspose/cells-cloud": "^26.10"
      }
    }
    ```
@@ -137,12 +138,16 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 - **Import/Export** — Facilitates importing data from various sources into spreadsheets and exporting spreadsheet data to other formats.
 - **Security Management** — Offers a range of security features like data encryption, access control, and permission management to safeguard the security and integrity of spreadsheet data.
 
-### Features & Enhancements in Version v26.9
+### Features & Enhancements in Version v26.10
 
 | **Summary**                                                                                                   | **Category** |
 | :------------------------------------------------------------------------------------------------------------ | :----------- |
-| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description.                           | Improvement  |
-| Fix code-gen/swagger specification for Aspose.Cells Cloud.                                                    | Bug          |
+| Refactor SearchController.cs: replace 7 remote read endpoints with [HttpGet] and remove deprecated forwarder | Improvement  |
+| Fix typo in CalculateController.cs: correct route 'aggergate' to 'aggregate'                                 | Bug          |
+| Fix operationName copy-paste errors in ManagementController.cs                                               | Bug          |
+| Mark StatisticalController.cs as obsolete                                                                    | Improvement  |
+| Security & Stability Fixes for Aspose.Cells Cloud API                                                       | Improvement  |
+| Add Exception Chain Support to CellsApiException and HttpWebException                                       | New Feature  |
 
 ### Available SDKs
 
@@ -195,7 +200,7 @@ The Aspose.Cells Cloud SDK is available in multiple popular programming language
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.9.0"
+       "aspose/cells-cloud": "^26.10"
      }
    }
    ```
@@ -281,12 +286,16 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### 版本 v26.9 中的功能与增强
+### 版本 v26.10 中的功能与增强
 
-| **摘要**                                                                           | **类别**   |
-| :--------------------------------------------------------------------------------- | :--------- |
-| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
-| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug         |
+| **摘要**                                                                                                   | **类别**     |
+| :--------------------------------------------------------------------------------------------------------- | :----------- |
+| Refactor SearchController.cs: replace 7 remote read endpoints with [HttpGet] and remove deprecated forwarder | Improvement  |
+| Fix typo in CalculateController.cs: correct route 'aggergate' to 'aggregate'                                | Bug          |
+| Fix operationName copy-paste errors in ManagementController.cs                                            | Bug          |
+| Mark StatisticalController.cs as obsolete                                                                  | Improvement  |
+| Security & Stability Fixes for Aspose.Cells Cloud API                                                      | Improvement  |
+| Add Exception Chain Support to CellsApiException and HttpWebException                                      | New Feature  |
 
 ---
 
@@ -317,7 +326,7 @@ Aspose.Cells Cloud を始めるには、以下の手順に従ってください�
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.9.0"
+       "aspose/cells-cloud": "^26.10"
      }
    }
    ```
@@ -403,12 +412,16 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### バージョン v26.9 の機能と改善点
+### バージョン v26.10 の機能と改善点
 
-| **概要**                                                                           | **カテゴリ** |
-| :--------------------------------------------------------------------------------- | :----------- |
-| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
-| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug         |
+| **概要**                                                                                                   | **カテゴリ**     |
+| :--------------------------------------------------------------------------------------------------------- | :--------------- |
+| Refactor SearchController.cs: replace 7 remote read endpoints with [HttpGet] and remove deprecated forwarder | Improvement      |
+| Fix typo in CalculateController.cs: correct route 'aggergate' to 'aggregate'                                | Bug              |
+| Fix operationName copy-paste errors in ManagementController.cs                                            | Bug              |
+| Mark StatisticalController.cs as obsolete                                                                  | Improvement      |
+| Security & Stability Fixes for Aspose.Cells Cloud API                                                      | Improvement      |
+| Add Exception Chain Support to CellsApiException and HttpWebException                                      | New Feature      |
 
 ---
 
@@ -439,7 +452,7 @@ Um mit Aspose.Cells Cloud zu beginnen, gehen Sie wie folgt vor:
    ```json
    {
      "require": {
-       "aspose/cells-cloud": "^26.9.0"
+       "aspose/cells-cloud": "^26.10"
      }
    }
    ```
@@ -525,14 +538,16 @@ $response = $cellsApi->convertSpreadsheet(new \Aspose\Cells\Cloud\Request\Conver
 
 ![architecture.png](architecture.png)
 
-### Funktionen & Verbesserungen in Version v26.9
+### Funktionen & Verbesserungen in Version v26.10
 
-| **Zusammenfassung**                                                                | **Kategorie** |
-| :--------------------------------------------------------------------------------- | :------------ |
-| Enhancement CheckCloudServiceHealth: Add Aspose.Cells Cloud information description. | Improvement |
-| Fix code-gen/swagger specification for Aspose.Cells Cloud.                         | Bug          |
-
----
+| **Zusammenfassung**                                                                                                   | **Kategorie**     |
+| :-------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| Refactor SearchController.cs: replace 7 remote read endpoints with [HttpGet] and remove deprecated forwarder         | Improvement       |
+| Fix typo in CalculateController.cs: correct route 'aggergate' to 'aggregate'                                          | Bug               |
+| Fix operationName copy-paste errors in ManagementController.cs                                                       | Bug               |
+| Mark StatisticalController.cs as obsolete                                                                            | Improvement       |
+| Security & Stability Fixes for Aspose.Cells Cloud API                                                                | Improvement       |
+| Add Exception Chain Support to CellsApiException and HttpWebException                                                | New Feature       |
 
 ### Available SDKs
 
@@ -555,3 +570,4 @@ The Aspose.Cells Cloud SDK is available in multiple popular programming language
 [![Ruby](https://img.shields.io/badge/Ruby-CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)](https://github.com/aspose-cells-cloud/aspose-cells-cloud-ruby) [![Ruby](https://img.shields.io/badge/Gem-aspose__cells__cloud-red?logo=ruby&style=for-the-badge)](https://rubygems.org/gems/aspose_cells_cloud)
 
 ### [Release History](CHANGELOG.md)
+```

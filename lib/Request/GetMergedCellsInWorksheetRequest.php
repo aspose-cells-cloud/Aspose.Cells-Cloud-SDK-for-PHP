@@ -66,7 +66,7 @@ class GetMergedCellsInWorksheetRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : The worksheet name to query for merged cells.
     */ 
     public $worksheet;
 
@@ -230,7 +230,7 @@ class GetMergedCellsInWorksheetRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

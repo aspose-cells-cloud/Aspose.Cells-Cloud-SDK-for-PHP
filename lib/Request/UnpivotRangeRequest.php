@@ -66,7 +66,7 @@ class UnpivotRangeRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : The worksheet name.
+    * worksheet : The worksheet name containing the data to unpivot.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class UnpivotRangeRequest extends BaseApiRequest
     }
 
     /*
-    * cellArea : A specified data range
+    * cellArea : The cell range to unpivot (e.g., "A1:D10").
     */ 
     public $cell_area;
 
@@ -96,7 +96,7 @@ class UnpivotRangeRequest extends BaseApiRequest
     }
 
     /*
-    * skipEmptyValue : 
+    * skipEmptyValue : If true, empty cells are skipped in the output. Default is true.
     */ 
     public $skip_empty_value;
 
@@ -315,7 +315,7 @@ class UnpivotRangeRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

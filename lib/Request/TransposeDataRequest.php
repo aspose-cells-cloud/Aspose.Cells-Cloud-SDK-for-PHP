@@ -66,7 +66,7 @@ class TransposeDataRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : The worksheet name.
+    * worksheet : The worksheet name containing the data to transpose.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class TransposeDataRequest extends BaseApiRequest
     }
 
     /*
-    * cellArea : A specified data range
+    * cellArea : The cell range to transpose (e.g., "A1:C10").
     */ 
     public $cell_area;
 
@@ -296,7 +296,7 @@ class TransposeDataRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

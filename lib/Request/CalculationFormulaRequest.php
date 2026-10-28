@@ -66,7 +66,7 @@ class CalculationFormulaRequest extends BaseApiRequest
     }
 
     /*
-    * worksheet : 
+    * worksheet : The worksheet name where the formula will be evaluated.
     */ 
     public $worksheet;
 
@@ -81,7 +81,7 @@ class CalculationFormulaRequest extends BaseApiRequest
     }
 
     /*
-    * formula : 
+    * formula : The formula expression to calculate (e.g., "SUM(A1:A10)" or "=A1+B1").
     */ 
     public $formula;
 
@@ -258,7 +258,7 @@ class CalculationFormulaRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

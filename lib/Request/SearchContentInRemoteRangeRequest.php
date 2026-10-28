@@ -81,7 +81,7 @@ class SearchContentInRemoteRangeRequest extends BaseApiRequest
     }
 
     /*
-    * cellArea : Specify the search cell area.
+    * cellArea : Specify the search cell area (e.g., "A1:C10").
     */ 
     public $cell_area;
 
@@ -111,7 +111,7 @@ class SearchContentInRemoteRangeRequest extends BaseApiRequest
     }
 
     /*
-    * ignoringCase : Ignore the text of the search.
+    * ignoringCase : Ignore the text case of the search. Default is true.
     */ 
     public $ignoring_case;
 
@@ -348,7 +348,7 @@ class SearchContentInRemoteRangeRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
@@ -357,7 +357,7 @@ class SearchContentInRemoteRangeRequest extends BaseApiRequest
 
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
-            'PUT',
+            'GET',
             $config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

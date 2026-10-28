@@ -51,7 +51,7 @@ class AcceptAllRevisionsInRemoteSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * name : 
+    * name : The name of the workbook file.
     */ 
     public $name;
 
@@ -66,7 +66,7 @@ class AcceptAllRevisionsInRemoteSpreadsheetRequest extends BaseApiRequest
     }
 
     /*
-    * folder : 
+    * folder : The folder path where the workbook is stored.
     */ 
     public $folder;
 
@@ -294,7 +294,7 @@ class AcceptAllRevisionsInRemoteSpreadsheetRequest extends BaseApiRequest
             $defaultHeaders['Authorization']= 'Bearer ' . $config->getAccessToken();
         }
         $defaultHeaders['x-aspose-client'] = 'php sdk';
-        $defaultHeaders['x-aspose-client-version'] = '26.9';
+        $defaultHeaders['x-aspose-client-version'] = '26.10.5';
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,

@@ -44,6 +44,7 @@ use Aspose\Cells\Cloud\Request\ReportAIAnalysisRequest;
 use Aspose\Cells\Cloud\Request\SummarizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\CategorizeSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\AggregateCellsByColorRequest;
+use Aspose\Cells\Cloud\Request\AggregateCellsByColor_DeprecatedRequest;
 use Aspose\Cells\Cloud\Request\MathCalculateRequest;
 use Aspose\Cells\Cloud\Request\CalculationFormulaRequest;
 use Aspose\Cells\Cloud\Request\PostAccessTokenRequest;
@@ -107,19 +108,26 @@ use Aspose\Cells\Cloud\Request\UnprotectSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\SpreadsheetDigitalsignatureRequest;
 use Aspose\Cells\Cloud\Request\SmartMarkerTemplateRequest;
 use Aspose\Cells\Cloud\Request\SearchAllTextItemsInRemoteSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\SearchAllTextItemsInRemoteSpreadsheet_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetAllTextItemsRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetContentRequest;
 use Aspose\Cells\Cloud\Request\SearchContentInRemoteSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\SearchContentInRemoteSpreadsheet_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SearchContentInRemoteWorksheetRequest;
+use Aspose\Cells\Cloud\Request\SearchContentInRemoteWorksheet_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SearchContentInRemoteRangeRequest;
+use Aspose\Cells\Cloud\Request\SearchContentInRemoteRange_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\ReplaceSpreadsheetContentRequest;
 use Aspose\Cells\Cloud\Request\ReplaceContentInRemoteSpreadsheetRequest;
 use Aspose\Cells\Cloud\Request\ReplaceContentInRemoteWorksheetRequest;
 use Aspose\Cells\Cloud\Request\ReplaceContentInRemoteRangeRequest;
 use Aspose\Cells\Cloud\Request\SearchSpreadsheetBrokenLinksRequest;
 use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteSpreadsheetRequest;
+use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteSpreadsheet_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteWorksheetRequest;
+use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteWorksheet_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteRangeRequest;
+use Aspose\Cells\Cloud\Request\SearchBrokenLinksInRemoteRange_LegacyPutRequest;
 use Aspose\Cells\Cloud\Request\SpecRequest;
 use Aspose\Cells\Cloud\Request\CodegenSpecRequest;
 use Aspose\Cells\Cloud\Request\TrimCharacterInRemoteSpreadsheetRequest;
@@ -511,6 +519,7 @@ use Aspose\Cells\Cloud\Model\FilesList;
 use Aspose\Cells\Cloud\Model\FilesUploadResult;
 use Aspose\Cells\Cloud\Model\StorageFile;
 use Aspose\Cells\Cloud\Model\GoogleDriveStorageFile;
+use Aspose\Cells\Cloud\Model\SharedDriveInfo;
 use Aspose\Cells\Cloud\Model\AggregateResultByColor;
 use Aspose\Cells\Cloud\Model\BrokenLink;
 use Aspose\Cells\Cloud\Model\CellArea;
@@ -1123,6 +1132,20 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Deprecated: Use String) instead.
+    /// This endpoint exists only for backward compatibility with clients that used the misspelled
+    /// route calculate/aggergate/color. It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="AggregateCellsByColor_DeprecatedRequest" /></param>
+    public function aggregateCellsByColor_Deprecated( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\AggregateResultByColorResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// </summary>
     /// <param name="request">Request. <see cref="MathCalculateRequest" /></param>
     public function mathCalculate( $request , $localOutPath = null)
@@ -1139,6 +1162,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Calculates a formula expression and returns the result.
     /// </summary>
     /// <param name="request">Request. <see cref="CalculationFormulaRequest" /></param>
     public function calculationFormula( $request , $localOutPath = null)
@@ -1988,7 +2012,7 @@ class CellsApi
         return  $response;}
 
     /// <summary>
-    /// Get all merged cell area form a local spreadsheet worksheet.
+    /// Get all merged cell areas from a local spreadsheet worksheet.
     /// </summary>
     /// <param name="request">Request. <see cref="GetMergedCellsInWorksheetRequest" /></param>
     public function getMergedCellsInWorksheet( $request)
@@ -2000,6 +2024,7 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Accepts all tracked changes (revisions) in the local spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="AcceptAllRevisionsRequest" /></param>
     public function acceptAllRevisions( $request , $localOutPath = null)
@@ -2016,6 +2041,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Accepts all tracked changes (revisions) in a remote spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="AcceptAllRevisionsInRemoteSpreadsheetRequest" /></param>
     public function acceptAllRevisionsInRemoteSpreadsheet( $request , $localOutPath = null)
@@ -2032,7 +2058,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Structurally convert the core metadata, worksheets, tables, pivot tables, charts, shapes, and other information of an Excel workbook into a JObject type JSON object, for scenarios such as data export, API responses, and log recording.
+    /// Extracts the structural information of a local spreadsheet as a JSON object.
     /// </summary>
     /// <param name="request">Request. <see cref="GetSpreadsheetStructureRequest" /></param>
     public function getSpreadsheetStructure( $request)
@@ -2044,7 +2070,7 @@ class CellsApi
         return  $response;}
 
     /// <summary>
-    /// Structurally convert the core metadata, worksheets, tables, pivot tables, charts, shapes, and other information of an Excel workbook into a JObject type JSON object, for scenarios such as data export, API responses, and log recording.
+    /// Extracts the structural information of a remote spreadsheet as a JSON object.
     /// </summary>
     /// <param name="request">Request. <see cref="GetStructureInRemoteSpreadsheetRequest" /></param>
     public function getStructureInRemoteSpreadsheet( $request)
@@ -2090,6 +2116,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Adds digital signatures to Excel spreadsheets using X.509 certificates (.pfx files) for document authentication and integrity verification.
     /// </summary>
     /// <param name="request">Request. <see cref="SpreadsheetDigitalsignatureRequest" /></param>
     public function spreadsheetDigitalsignature( $request , $localOutPath = null)
@@ -2106,6 +2133,7 @@ class CellsApi
             }}
 
     /// <summary>
+    /// Generates reports using Smart Marker template technology with JSON data.
     /// </summary>
     /// <param name="request">Request. <see cref="SmartMarkerTemplateRequest" /></param>
     public function smartMarkerTemplate( $request , $localOutPath = null)
@@ -2126,6 +2154,20 @@ class CellsApi
     /// </summary>
     /// <param name="request">Request. <see cref="SearchAllTextItemsInRemoteSpreadsheetRequest" /></param>
     public function searchAllTextItemsInRemoteSpreadsheet( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchAllTextItemsInRemoteSpreadsheet_LegacyPutRequest" /></param>
+    public function searchAllTextItemsInRemoteSpreadsheet_LegacyPut( $request)
     {
         $this->checkAccessToken();
         $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
@@ -2170,6 +2212,20 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchContentInRemoteSpreadsheet_LegacyPutRequest" /></param>
+    public function searchContentInRemoteSpreadsheet_LegacyPut( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Search text in the worksheet of remoted spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="SearchContentInRemoteWorksheetRequest" /></param>
@@ -2182,10 +2238,38 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchContentInRemoteWorksheet_LegacyPutRequest" /></param>
+    public function searchContentInRemoteWorksheet_LegacyPut( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Search text in the range of remoted spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="SearchContentInRemoteRangeRequest" /></param>
     public function searchContentInRemoteRange( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchContentInRemoteRange_LegacyPutRequest" /></param>
+    public function searchContentInRemoteRange_LegacyPut( $request)
     {
         $this->checkAccessToken();
         $returnType = '\Aspose\Cells\Cloud\Model\SearchResponse';
@@ -2271,6 +2355,20 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchBrokenLinksInRemoteSpreadsheet_LegacyPutRequest" /></param>
+    public function searchBrokenLinksInRemoteSpreadsheet_LegacyPut( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\BrokenLinksResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Search broken links in the worksheet of remoted spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="SearchBrokenLinksInRemoteWorksheetRequest" /></param>
@@ -2283,10 +2381,38 @@ class CellsApi
         return  $response;}
 
     /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchBrokenLinksInRemoteWorksheet_LegacyPutRequest" /></param>
+    public function searchBrokenLinksInRemoteWorksheet_LegacyPut( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\BrokenLinksResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
     /// Search broken links in the range of remoted spreadsheet.
     /// </summary>
     /// <param name="request">Request. <see cref="SearchBrokenLinksInRemoteRangeRequest" /></param>
     public function searchBrokenLinksInRemoteRange( $request)
+    {
+        $this->checkAccessToken();
+        $returnType = '\Aspose\Cells\Cloud\Model\BrokenLinksResponse';
+        $requesData = $request->createHttpRequest($this->headerSelector, $this->config);
+        list($response) = $this->execute($requesData,$returnType);
+        return  $response;}
+
+    /// <summary>
+    /// Deprecated PUT route for String).
+    /// This endpoint exists only for backward compatibility with clients that used the PUT verb on this read-only route.
+    /// It will be removed in a future major version.
+    /// </summary>
+    /// <param name="request">Request. <see cref="SearchBrokenLinksInRemoteRange_LegacyPutRequest" /></param>
+    public function searchBrokenLinksInRemoteRange_LegacyPut( $request)
     {
         $this->checkAccessToken();
         $returnType = '\Aspose\Cells\Cloud\Model\BrokenLinksResponse';
@@ -2572,7 +2698,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Delete all blank rows that do not contain any data or other objects.
+    /// Delete all blank columns that do not contain any data or other objects.
     /// </summary>
     /// <param name="request">Request. <see cref="RemoveSpreadsheetBlankColumnsRequest" /></param>
     public function removeSpreadsheetBlankColumns( $request , $localOutPath = null)
@@ -2657,7 +2783,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Switch rows and columns in the spreadsheet.
+    /// Transposes data in the specified range, switching rows and columns.
     /// </summary>
     /// <param name="request">Request. <see cref="TransposeDataRequest" /></param>
     public function transposeData( $request , $localOutPath = null)
@@ -2674,7 +2800,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Switch rows and columns in the spreadsheet.
+    /// Unpivots data from the specified range, converting columns to rows.
     /// </summary>
     /// <param name="request">Request. <see cref="UnpivotRangeRequest" /></param>
     public function unpivotRange( $request , $localOutPath = null)
@@ -2691,7 +2817,7 @@ class CellsApi
             }}
 
     /// <summary>
-    /// Switch rows and columns in the spreadsheet.
+    /// Unpivots data from the specified table, converting columns to rows.
     /// </summary>
     /// <param name="request">Request. <see cref="UnpivotTableRequest" /></param>
     public function unpivotTable( $request , $localOutPath = null)
