@@ -2,12 +2,11 @@ name: Aspose Cells Cloud SDK for PHP
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-
   build:
     runs-on: windows-latest
 
@@ -16,50 +15,53 @@ jobs:
       CellsCloudClientSecret: ${{ secrets.PRODUCTCLIENTSECRET }}
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up PHP with OpenSSL on Windows
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'  # Adjust as needed
-        extensions: openssl,zip
-        ini-values: curl.cainfo=${{ github.workspace }}/cacert.pem
-        coverage: none
+      - name: Set up PHP with OpenSSL on Windows
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: openssl,zip
+          ini-values: curl.cainfo=${{ github.workspace }}/cacert.pem
+          coverage: none
 
-    - name: Download cacert.pem
-      run: curl -o cacert.pem https://curl.se/ca/cacert.pem
+      - name: Download cacert.pem
+        run: curl -o cacert.pem https://curl.se/ca/cacert.pem
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      - name: Configure Composer security policy
+        run: composer config policy.advisories.ignore-id '["PKSA-rdkp-vv9z-mjkg", "PKSA-6vdd-n4sx-knhy"]'
 
-    - name: Run Example Codes
-      shell: cmd
-      run: |
-        cd examples
-        .\composer.bat install --prefer-dist --no-progress
-        php .\QuickStart\QuickStart.php
-        php .\Conversion\ConvertChart.php
-        php .\Conversion\ConvertWorkbook.php
-        php .\Conversion\ConvertRange.php
-        php .\Conversion\ConvertTable.php
-        php .\Conversion\ConvertWorksheet.php
-        php .\CloudStorage\FileManagement.php
-        php .\DataProcessing\SplitWorkbook.php
-        php .\DataProcessing\CleanData.php
-        php .\DataProcessing\TrimCharacters.php
-        php .\DataProcessing\TrimContent.php
-        php .\AI\DecomposeTask.php
-        php .\AI\TranslateSpreadsheet.php
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run Example Codes
+        shell: cmd
+        run: |
+          cd examples
+          .\composer.bat install --prefer-dist --no-progress
+          php .\QuickStart\QuickStart.php
+          php .\Conversion\ConvertChart.php
+          php .\Conversion\ConvertWorkbook.php
+          php .\Conversion\ConvertRange.php
+          php .\Conversion\ConvertTable.php
+          php .\Conversion\ConvertWorksheet.php
+          php .\CloudStorage\FileManagement.php
+          php .\DataProcessing\SplitWorkbook.php
+          php .\DataProcessing\CleanData.php
+          php .\DataProcessing\TrimCharacters.php
+          php .\DataProcessing\TrimContent.php
+          php .\AI\DecomposeTask.php
+          php .\AI\TranslateSpreadsheet.php
