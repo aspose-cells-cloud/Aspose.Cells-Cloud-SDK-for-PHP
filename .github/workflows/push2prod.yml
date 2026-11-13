@@ -1,0 +1,22 @@
+name: Update PHP SDK Libaray Packagist
+
+on:
+  push:
+    tags:
+      - 'v*'         
+  release:
+    types: [published]
+
+jobs:
+  packagist:
+    runs-on: ubuntu-latest
+    env:
+      PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }} 
+    steps:
+      - name: Notify Packagist
+        run: |
+          curl --fail-with-body -sS -X POST \
+            "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{"repository":{"url":"https://packagist.org/packages/aspose/cells-sdk-php"}}'
