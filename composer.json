@@ -1,6 +1,5 @@
 {
     "name": "aspose/cells-sdk-php",
-    "version": "26.11.0",
     "description": "Aspose.Cells Cloud SDK for PHP (generated from aspose.cells.cloud.specification.json)",
     "keywords": ["aspose", "cells", "cloud", "excel", "sdk"],
     "type": "library",

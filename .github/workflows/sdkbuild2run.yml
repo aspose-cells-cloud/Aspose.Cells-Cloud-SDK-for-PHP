@@ -32,7 +32,6 @@ jobs:
       - name: Download cacert.pem
         run: curl -o cacert.pem https://curl.se/ca/cacert.pem
 
-      # 关闭 Composer 2.9+ 的安全告警拦截
       - name: Disable Composer advisory blocking
         run: composer config --global policy.advisories.block false
 
@@ -54,7 +53,6 @@ jobs:
       - name: Run Example Codes
         shell: cmd
         env:
-          # ===== 新增：步骤级也覆盖，防止 examples/composer.bat 继承到 token =====
           GITHUB_TOKEN: ""
           COMPOSER_PROCESS_TIMEOUT: 0
           COMPOSER_NO_INTERACTION: 1
