@@ -14,3 +14,4 @@ composer.lock
 cacert.pem
 integrationtests/composer.phar
 TestData
+tests

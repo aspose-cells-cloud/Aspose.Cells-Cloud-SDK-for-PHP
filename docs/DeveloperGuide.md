@@ -478,6 +478,11 @@ This Developer Guide serves as the complete technical reference for the Aspose.C
 | [PostWorksheetValidation](api/PostWorksheetValidation.md) | Update a validation by index in the worksheet. |
 | [DeleteWorksheetValidation](api/DeleteWorksheetValidation.md) | Delete a validation by index in worksheet. |
 | [DeleteWorksheetValidations](api/DeleteWorksheetValidations.md) | Delete all validations in the worksheet. |
+| [ExportPageAsFormat](api/ExportPageAsFormat.md) | This method processes a worksheet page of spreadsheet directly in cloud storage, converting it to the requested output format (PDF, or Image format) without requiring the file to b |
+| [ConvertPage](api/ConvertPage.md) | ConvertPage |
+| [GenerateReport](api/GenerateReport.md) | Upload an Excel template containing Smart Markers (e.g., &amp;=Data.FieldName) plus the data for one |
+| [GenerateBatchReport](api/GenerateBatchReport.md) | Renders the template once per record and returns either an archive of files or one aggregated |
+| [FillReport](api/FillReport.md) | Takes a JSON array of objects (or a single object), creates a worksheet with a bold header row, |
 
 ## **Model Reference**
 
@@ -936,4 +941,35 @@ This Developer Guide serves as the complete technical reference for the Aspose.C
 | [DiscoverPivotTable](model/DiscoverPivotTable.md)| Represents a pivot table, which is a pivot table created based on data analysis of a table. |
 | [ExcelDataStatistics](model/ExcelDataStatistics.md)| Represents Excel data statistics. |
 | [WorksheetDataStatistics](model/WorksheetDataStatistics.md)| Represents worksheet data statistics. |
-
+| [AggregateOperation](model/AggregateOperation.md)|  |
+| [CalculateOperation](model/CalculateOperation.md)|  |
+| [CellSourceType](model/CellSourceType.md)|  |
+| [CharacterSetsType](model/CharacterSetsType.md)|  |
+| [ColorPositionType](model/ColorPositionType.md)|  |
+| [ConvertTextType](model/ConvertTextType.md)|  |
+| [DelimitersType](model/DelimitersType.md)|  |
+| [ExtractTextType](model/ExtractTextType.md)|  |
+| [PositionOptionsType](model/PositionOptionsType.md)|  |
+| [RemoveTextMethodType](model/RemoveTextMethodType.md)|  |
+| [SplitType](model/SplitType.md)|  |
+| [WordCaseType](model/WordCaseType.md)|  |
+| [DataItemType](model/DataItemType.md)| Represents data item type. |
+| [DataSourceType](model/DataSourceType.md)| Represents data source type. |
+| [FileSourceType](model/FileSourceType.md)|  |
+| [ImageAdaptOptions](model/ImageAdaptOptions.md)|  |
+| [ResultDestinationType](model/ResultDestinationType.md)| Represents result destination type. |
+| [ResultSource](model/ResultSource.md)| Represents result source type. |
+| [TaskType](model/TaskType.md)| Represents task type. |
+| [OperateObjectType](model/OperateObjectType.md)| Represents operate object type. |
+| [OperateType](model/OperateType.md)| Represents operate type. |
+| [AppliedOperateType](model/AppliedOperateType.md)| Operation type. |
+| [JoinType](model/JoinType.md)| Join Type. |
+| [QueryDataSourceType](model/QueryDataSourceType.md)| Represents query data source type |
+| [DataMergeType](model/DataMergeType.md)|  |
+| [RemoveDuplicatesAreaType](model/RemoveDuplicatesAreaType.md)|  |
+| [ScopeOptionsType](model/ScopeOptionsType.md)|  |
+| [SelectPositionOptionsType](model/SelectPositionOptionsType.md)| Represents where text should be inserted or selected in the spreadsheet. |
+| [SplitDelimitersType](model/SplitDelimitersType.md)|  |
+| [ImportDataType](model/ImportDataType.md)|  |
+| [ColumnDataExceptionDescription](model/ColumnDataExceptionDescription.md)|  |
+| [TextCategoryType](model/TextCategoryType.md)|  |

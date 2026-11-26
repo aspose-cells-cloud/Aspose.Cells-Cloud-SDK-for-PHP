@@ -1,18 +1,18 @@
 name: Update PHP SDK Libaray Packagist
 
-on:
-  push:
-    tags:
-      - 'v*'         
-  release:
-    types: [published]
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+#   release:
+#     types: [published]
 
 jobs:
   packagist:
     runs-on: ubuntu-latest
     env:
       PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
-      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }} 
+      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
     steps:
       - name: Notify Packagist
         run: |
