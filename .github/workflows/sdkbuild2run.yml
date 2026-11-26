@@ -60,16 +60,13 @@ jobs:
         run: |
           cd examples
           .\composer.bat install --prefer-dist --no-progress --no-interaction
-          php .\QuickStart\QuickStart.php
-          php .\Conversion\ConvertChart.php
-          php .\Conversion\ConvertWorkbook.php
-          php .\Conversion\ConvertRange.php
-          php .\Conversion\ConvertTable.php
-          php .\Conversion\ConvertWorksheet.php
-          php .\CloudStorage\FileManagement.php
-          php .\DataProcessing\SplitWorkbook.php
-          php .\DataProcessing\CleanData.php
-          php .\DataProcessing\TrimCharacters.php
-          php .\DataProcessing\TrimContent.php
-          php .\AI\DecomposeTask.php
-          php .\AI\TranslateSpreadsheet.php
+          php Example_QuickStart.php
+          php Example_ConvertWorkbook.php
+          php Example_StorageManagement.php
+          php Example_WorksheetManagement.php
+          php Example_MergeWorkbooks.php
+          php Example_SplitWorkbook.php
+          php Example_TextProcessing.php
+          php Example_Protection.php
+          php Example_GetWorksheetCell.php
+          php Example_CalculateFormula.php
