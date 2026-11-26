@@ -59,7 +59,7 @@ jobs:
           COMPOSER_NO_AUDIT: 1
         run: |
           cd examples
-          .\composer.bat install --prefer-dist --no-progress --no-interaction
+          # .\composer.bat install --prefer-dist --no-progress --no-interaction
           php Example_QuickStart.php
           php Example_ConvertWorkbook.php
           php Example_StorageManagement.php
