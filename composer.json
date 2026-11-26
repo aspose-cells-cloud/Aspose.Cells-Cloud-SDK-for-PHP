@@ -1,40 +1,25 @@
 {
-	"name" : "aspose/cells-sdk-php",
-	"type" : "library",
-	"description" : "Effortlessly handle Excel and other spreadsheet documents with features like opening, generating, editing, splitting, merging, comparing, and converting. Seamlessly integrate Cloud API into your solutions to efficiently manipulate documents. Convert Excel or other spreadsheets to CSV, PDF, JSON, XML, HTML, images, and more.",
-	"keywords" : [
-		"excel",
-		"spreadsheet",
-		"convert",
-		"xlsx",
-		"chart",
-		"pivot table",
-		"aspose cells",
-		"REST API",
-		"cloud"
-	],
-	"homepage" : "https://github.com/aspose-cells-cloud/aspose-cells-cloud-php",
-	"license" : "MIT",
-	"authors" : [{
-			"name" : "aspose-cells-cloud",
-			"homepage" : "https://github.com/aspose-cells-cloud/aspose-cells-cloud-php"
-		}
-	],
-	"require" : {
-		"php" : ">=7.4",
-		"ext-curl" : "*",
-		"ext-json" : "*",
-		"ext-mbstring" : "*",
-		"guzzlehttp/guzzle" : "^7.4"
-	},
-	"require-dev" : {
-		"phpunit/phpunit" : "^8",
-		"squizlabs/php_codesniffer" : "~2.6"
-	},
-	"autoload": {
-        "psr-4": { "Aspose\\Cells\\Cloud\\" : "lib/" }
+    "name": "aspose/cells-sdk-php",
+    "version": "26.11.0",
+    "description": "Aspose.Cells Cloud SDK for PHP (generated from aspose.cells.cloud.specification.json)",
+    "keywords": ["aspose", "cells", "cloud", "excel", "sdk"],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.0"
     },
-    "autoload-dev": {
-        "psr-4": { "Aspose\\Cells\\Cloud\\" : "integrationtests/" }
-  }
+    "autoload": {
+        "psr-4": {
+            "Aspose\\Cells\\Cloud\\": "lib/Aspose/Cells/Cloud/"
+        }
+    },
+    "scripts": {
+        "smoke": "php tests/smoke.php",
+        "test": "php tests/smoke.php",
+        "test:integration": "php tests/integration/run_all.php"
+    }
 }
