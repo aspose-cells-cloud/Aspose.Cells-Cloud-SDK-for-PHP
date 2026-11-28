@@ -52,16 +52,18 @@ To begin with Aspose.Cells Cloud, here's what you need to do:
 
 ```php
 <?php
-
-require __DIR__ . '/common.php';
-
 use Aspose\Cells\Cloud\Converter\Converter;
 use Aspose\Cells\Cloud\Converter\Formats;
 use Aspose\Cells\Cloud\DataSource\FilePathSink;
 use Aspose\Cells\Cloud\DataSource\FilePathSource;
 
 run_example(function () {
-    $client = client_from_env();
+    $client = new \Aspose\Cells\Cloud\Api\AsposeCellsCloudApi(
+        getenv('CellsCloudClientId'),
+         getenv('CellsCloudClientSecret'),
+        'v4.0',
+         getenv('CellsCloudApiBaseUrl')
+    );
     $output = output_path('EmployeeSalesSummary.pdf');
     Converter::convert(
         $client,
